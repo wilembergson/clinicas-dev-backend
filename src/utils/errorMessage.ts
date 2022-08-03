@@ -1,3 +1,3 @@
-export default function ErrorMessage(status:number, message: string){
-    throw {status, message}
+export default function ErrorMessage(status:number, error: string){
+    throw {status, error}
 }

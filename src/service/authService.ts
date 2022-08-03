@@ -8,7 +8,7 @@ export type userBody = {
     cpf:string,
     name:string,
     birthDate:string,
-    phone:number,
+    phone:string,
     email:string,
     password:string,
     repeatPassword:string
