@@ -1,8 +1,8 @@
 import {Request, Response, NextFunction} from "express"
 
 export default function errorHandler (error, req: Request, res: Response, next: NextFunction) {
-  if(error.message && error.status){
-    return res.status(error.status).json({message: error.message})
+  if(error.error && error.status){
+    return res.status(error.status).json({error: error.error})
   }
-  return res.status(500).json({message: 'Erro ao acessar o banco de dados.'})
+  return res.status(500).json({error: 'Erro ao acessar o banco de dados.'})
 }
