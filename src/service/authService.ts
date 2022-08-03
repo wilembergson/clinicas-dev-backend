@@ -1,4 +1,6 @@
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import sessionRepository, { SessionInsertData } from "../repository/sessionRepository.js"
 
 import userRepository, { UserInsertData } from "../repository/userRepository.js"
 import ErrorMessage from "../utils/errorMessage.js"
@@ -13,6 +15,11 @@ export type userBody = {
     password:string,
     repeatPassword:string
 }
+export type LoginBody = {
+    email:string,
+    password:string
+}
+
 async function newUser(userBody:userBody) {
     const { cpf, name, birthDate, phone, email, password, repeatPassword} = userBody
     const user = await userRepository.findUser(cpf)
@@ -37,7 +44,31 @@ async function newUser(userBody:userBody) {
     return sucessMessage("Novo usuário cadastrado com sucesso.")
 }
 
+async function login(login:LoginBody){
+    const { email, password } = login
+    const user = await userRepository.findUserByEmail(email)
+    if(!user) return ErrorMessage(401, "Este email não existe. Tente novamente.")
+    const checkPassword = bcrypt.compareSync(password, user.password)
+    if(!checkPassword) return ErrorMessage(401, "Senha incorreta. Tente novamente.")
+    const token = jwt.sign(
+        {
+            userId: user.id
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: 300000
+        }
+    )
+    const newSession:SessionInsertData = {
+        dateAccess: new Date(),
+        userId: user.id
+    }
+    await sessionRepository.newSession(newSession)
+    return { token }
+}
+
 const authService = {
-    newUser
+    newUser,
+    login
 }
 export default authService

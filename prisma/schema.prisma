@@ -20,7 +20,8 @@ model User {
   password String
   type String
   active Boolean
-  Address Address[]
+  sessions Session[]
+  usersAddresses UsersAddresses[]
 
   @@map("users")
 }
@@ -32,8 +33,26 @@ model Address {
   district String
   city String
   state String
+  usersAddresses UsersAddresses[]
+
+  @@map("address")
+}
+
+model UsersAddresses{
+  id Int @id @default(autoincrement())
+  userId Int
+  addressId Int
+  user User @relation(fields: userId, references: [id])
+  address Address @relation(fields: addressId, references: [id])
+
+  @@map("usersAddresses")
+}
+
+model Session{
+  id Int @id @default(autoincrement())
+  dateAccess DateTime
   userId Int
   user User @relation(fields: userId, references: [id])
 
-  @@map("address")
+  @@map("session")
 }
