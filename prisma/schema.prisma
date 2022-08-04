@@ -22,6 +22,7 @@ model User {
   active Boolean
   sessions Session[]
   usersAddresses UsersAddresses[]
+  consult Consult[]
 
   @@map("users")
 }
@@ -56,3 +57,53 @@ model Session{
 
   @@map("session")
 }
+
+model Specialty{
+  id Int @id @default(autoincrement())
+  name String @unique
+  specialtiesDays SpecialtiesDays[]
+  doctor Doctor[]
+  consult Consult[]
+
+  @@map("specialty")
+}
+
+model Days{
+  id Int @id @default(autoincrement())
+  name String @unique
+  specialtiesDays SpecialtiesDays[]
+
+  @@map("days")
+}
+
+model SpecialtiesDays{
+  id Int @id @default(autoincrement())
+  specialtyId Int
+  daysId Int
+  spetialty Specialty @relation(fields: [specialtyId], references: [id])
+  days Days @relation(fields: [daysId], references: [id])
+
+  @@map("specialtiesDays")
+}
+
+model Doctor{
+  id Int @id @default(autoincrement())
+  name String
+  crm String @unique
+  specialtyId Int
+  specialty Specialty @relation(fields: [specialtyId], references: [id])
+
+  @@map("doctor")
+}
+
+model Consult{
+  id Int @id @default(autoincrement())
+  date DateTime
+  userId Int
+  specialtyId Int
+  user User @relation(fields: [userId], references: [id])
+  specialty Specialty @relation(fields: [specialtyId], references: [id])
+
+  @@map("consult")
+}
+
