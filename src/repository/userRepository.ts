@@ -4,13 +4,13 @@ import prisma from "../config/database.js"
 
 export type UserInsertData = Omit<User, "id">
 
-async function newUser(user: UserInsertData):Promise<User>{
+async function newUser(user: UserInsertData){
     return await prisma.user.create({
          data: user
      })
  }
 
- async function findUser(cpf:string):Promise<User>{
+ async function findUser(cpf:string){
     return await prisma.user.findUnique({
         where:{
             cpf
@@ -18,7 +18,7 @@ async function newUser(user: UserInsertData):Promise<User>{
     })
 }
 
-async function findUserByEmail(email:string):Promise<User>{
+async function findUserByEmail(email:string){
     return await prisma.user.findFirst({
         where:{
             email

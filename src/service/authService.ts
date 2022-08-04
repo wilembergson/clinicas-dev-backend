@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import sessionRepository, { SessionInsertData } from "../repository/sessionRepository.js"
 
+import sessionRepository, { SessionInsertData } from "../repository/sessionRepository.js"
 import userRepository, { UserInsertData } from "../repository/userRepository.js"
 import ErrorMessage from "../utils/errorMessage.js"
 import sucessMessage from "../utils/sucessMessage.js"

@@ -9,3 +9,20 @@ async function newAddress(address:AddressInsertData){
         data: address
     })
 }
+
+async function getAddress(userId:number){
+    return await prisma.usersAddresses.findFirst({
+        where:{
+            userId
+        },
+        select:{
+            address:{}
+        }
+    })
+}
+
+const addressRepository = {
+    newAddress,
+    getAddress
+}
+export default addressRepository
