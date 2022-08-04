@@ -32,7 +32,7 @@ model Address {
   number Int
   district String
   city String
-  state String
+  uf String
   usersAddresses UsersAddresses[]
 
   @@map("address")
@@ -42,8 +42,8 @@ model UsersAddresses{
   id Int @id @default(autoincrement())
   userId Int
   addressId Int
-  user User @relation(fields: userId, references: [id])
-  address Address @relation(fields: addressId, references: [id])
+  user User @relation(fields: [userId], references: [id])
+  address Address @relation(fields: [addressId], references: [id])
 
   @@map("usersAddresses")
 }
