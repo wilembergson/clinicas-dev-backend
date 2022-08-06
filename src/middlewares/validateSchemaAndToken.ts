@@ -14,7 +14,6 @@ export function validateSchemaAndTokenMiddleware(schema: ObjectSchema) {
     }
     res.locals.body = req.body
     res.locals.token = token
-    console.log("Passou no middleware.")
     next();
   };
 }
