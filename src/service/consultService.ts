@@ -30,6 +30,7 @@ async function newConsult(consultData:ConsultBody, token:string){
     return sucessMessage("Consulta marcada com sucesso.")
 }
 
+//Get the indices for each day of the week
 async function getDaysIndex(list:any[]){
     const result = []
     const days = list.map(item => item.days.name)
