@@ -1,14 +1,10 @@
 import { Request, Response } from "express"
-import specialtyService from "../service/specialtyService.js"
 
+import consultService from "../service/consultService.js"
 
-export async function getSpecialtyByName(req:Request, res:Response){
-    const { specialtyName } = req.body
-    const result = await specialtyService.getSpecialtyByName(specialtyName)
-    return res.status(200).json(result)
-}
-
-export async function listSpecialties(req:Request, res:Response){
-    const result = await specialtyService.getSpecialties()
-    return res.status(200).json(result)
+export async function createNewConsult(req:Request, res:Response){
+    const consultData = res.locals.body
+    const token = res.locals.token
+    const result = await consultService.newConsult(consultData, token)
+    return res.status(201).json(result)
 }
