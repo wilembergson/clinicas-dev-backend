@@ -2,7 +2,7 @@ import Joi from "joi";
 import { userBody } from "../service/authService";
 
 export const userSchema = Joi.object<userBody>({
-    cpf: Joi.string().length(11).required(),
+    cpf: Joi.string().length(14).required(),
     name:Joi.string().required(),
     birthDate: Joi.string().required(),
     phone:Joi.string().length(11).required(),
