@@ -52,7 +52,8 @@ async function login(login:LoginBody){
     if(!checkPassword) return ErrorMessage(401, "Senha incorreta. Tente novamente.")
     const token = jwt.sign(
         {
-            userId: user.id
+            userId: user.id,
+            userName: user.name
         },
         process.env.JWT_SECRET,
         {

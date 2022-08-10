@@ -2,7 +2,7 @@ import consultRepository, { ConsultInsertData } from "../repository/consultRepos
 import specialtyRepository from "../repository/specialtyRepository.js"
 import ErrorMessage from "../utils/errorMessage.js"
 import sucessMessage from "../utils/sucessMessage.js"
-import getUserIdFromToken from "../utils/tokenInfo.js"
+import getUserFromToken from "../utils/tokenInfo.js"
 
 export type ConsultBody = {
     specialtyName:string,
@@ -11,7 +11,7 @@ export type ConsultBody = {
 
 async function newConsult(consultData:ConsultBody, token:string){
     const { specialtyName, date } = consultData
-    const userId = await getUserIdFromToken(token)
+    const user = await getUserFromToken(token)
     const specialty = await specialtyRepository.getSpecialtyWithDaysAndDoctors(specialtyName)
     if(!specialty) return ErrorMessage(404, "Especialidade não cadastrada. Selecione uma espealidade válida.")
     const avaialiableDays = specialty.specialtiesDays
@@ -23,7 +23,7 @@ async function newConsult(consultData:ConsultBody, token:string){
     if(currentDate > consultDate) return ErrorMessage(401, "Não é permitido agendar condultas em dias passados.")
     const newConsult:ConsultInsertData = {
         date: consultDate,
-        userId,
+        userId: user.userId,
         specialtyId:specialty.id
     }
     await consultRepository.newConsult(newConsult)
