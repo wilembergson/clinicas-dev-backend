@@ -9,6 +9,7 @@ export type ConsultBody = {
     date:string
 }
 
+//CORRIGIR BUGS EM RELAÇÃO AOS DIAS DAS CONSULTAS
 async function newConsult(consultData:ConsultBody, token:string){
     const { specialtyName, date } = consultData
     const user = await getUserFromToken(token)

@@ -20,8 +20,24 @@ async function getSpecialtyWithDaysAndDoctors(name:string){
     })
 }
 
+async function getDaysAvailable(name:string){
+    return await prisma.specialty.findMany({
+        where:{
+            name
+        },
+        include:{
+            specialtiesDays:{
+                select:{
+                    days:{}
+                }
+            }
+        }
+    })
+}
+
 const specialtyRepository = {
     getSpecialties,
-    getSpecialtyWithDaysAndDoctors
+    getSpecialtyWithDaysAndDoctors,
+    getDaysAvailable
 }
 export default specialtyRepository
