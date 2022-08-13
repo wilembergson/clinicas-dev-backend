@@ -8,3 +8,9 @@ export async function createNewConsult(req:Request, res:Response){
     const result = await consultService.newConsult(consultData, token)
     return res.status(201).json(result)
 }
+
+export async function listMyConsults(req:Request, res:Response){
+    const token = res.locals.token
+    const result = await consultService.lisMyConsults(token)
+    return res.status(200).json(result)
+}

@@ -30,6 +30,12 @@ async function newConsult(consultData:ConsultBody, token:string){
     return sucessMessage("Consulta marcada com sucesso.")
 }
 
+async function lisMyConsults(token:string){
+    const user = await getUserFromToken(token)
+    const consultList = await consultRepository.lisMyConsults(user.userId)
+    return consultList
+}
+
 //Get the indices for each day of the week
 async function getDaysIndex(list:any[]){
     const result = []
@@ -65,6 +71,7 @@ async function getDaysIndex(list:any[]){
 }
 
 const consultService = {
-    newConsult
+    newConsult,
+    lisMyConsults
 }
 export default consultService
