@@ -39,30 +39,30 @@ async function lisMyConsults(token:string){
 
 //Get the indices for each day of the week
 async function getDaysIndex(list:any[]){
-    const result = []
+    const result:number[] = []
     const days = list.map(item => item.days.name)
     days.forEach(item => {
         switch(item){
             case 'DOMINGO':
-                result.push(0)
+                result.push(6)
                 break
             case 'SEGUNDA-FEIRA':
-                result.push(1)
+                result.push(0)
                 break
             case 'TERÇA-FEIRA':
-                result.push(2)
+                result.push(1)
                 break
             case 'QUARTA-FEIRA':
-                result.push(3)
+                result.push(2)
                 break
             case 'QUINTA-FEIRA':
-                result.push(4)
+                result.push(3)
                 break
             case 'SEXTA-FEIRA':
-                result.push(5)
+                result.push(4)
                 break
             case 'SÁBADO':
-                result.push(6)
+                result.push(5)
                 break
             default:
                 break
