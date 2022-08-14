@@ -9,7 +9,6 @@ export type ConsultBody = {
     date:string
 }
 
-//CORRIGIR BUGS EM RELAÇÃO AOS DIAS DAS CONSULTAS
 async function newConsult(consultData:ConsultBody, token:string){
     const { specialtyName, date } = consultData
     const user = await getUserFromToken(token)
@@ -37,6 +36,19 @@ async function lisMyConsults(token:string){
     const user = await getUserFromToken(token)
     const consultList = await consultRepository.lisMyConsults(user.userId)
     return consultList
+}
+
+async function nextConsult(token:string){
+    const user = await getUserFromToken(token)
+    const consultList = await consultRepository.lisMyConsults(user.userId)
+    return orderedLis(consultList)
+}
+
+async function orderedLis(list:any[]){
+    const now = new Date()
+    const result = list.filter(item => item.date > now)
+    result.sort((a,b) => Number(a.date) - Number(b.date))
+    return result
 }
 
 //Get the indices for each day of the week
@@ -75,6 +87,7 @@ async function getDaysIndex(list:any[]){
 
 const consultService = {
     newConsult,
-    lisMyConsults
+    lisMyConsults,
+    nextConsult
 }
 export default consultService
