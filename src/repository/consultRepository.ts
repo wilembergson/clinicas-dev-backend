@@ -22,8 +22,19 @@ async function lisMyConsults(userId:number){
     })
 }
 
+async function getConsult(consult:ConsultInsertData){
+    return await prisma.consult.findFirst({
+        where:{
+            date:consult.date,
+            userId:consult.userId,
+            specialtyId:consult.specialtyId   
+        }
+    })
+}
+
 const consultRepository = {
     newConsult,
-    lisMyConsults
+    lisMyConsults,
+    getConsult
 }
 export default consultRepository

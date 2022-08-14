@@ -27,6 +27,8 @@ async function newConsult(consultData:ConsultBody, token:string){
         userId: user.userId,
         specialtyId:specialty.id
     }
+    const existingConsult = await consultRepository.getConsult(newConsult)
+    if(existingConsult) return ErrorMessage(401, 'Você já tem consulta marcada para este dia.')
     await consultRepository.newConsult(newConsult)
     return sucessMessage("Consulta marcada com sucesso.")
 }
