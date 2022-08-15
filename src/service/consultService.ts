@@ -41,14 +41,28 @@ async function lisMyConsults(token:string){
 async function nextConsult(token:string){
     const user = await getUserFromToken(token)
     const consultList = await consultRepository.lisMyConsults(user.userId)
-    return orderedLis(consultList)
+    const nextConsult = orderedList(consultList)
+    return nextConsult
 }
 
-async function orderedLis(list:any[]){
+async function historic(token:string){
+    const user = await getUserFromToken(token)
+    const consultList = await consultRepository.lisMyConsults(user.userId)
+    return pastConsults(consultList)
+}
+
+async function pastConsults(list:any[]){
+    const now = new Date()
+    const result = list.filter(item => item.date < now)
+    result.sort((a,b) => Number(b.date) - Number(a.date))
+    return result
+}
+
+async function orderedList(list:any[]){
     const now = new Date()
     const result = list.filter(item => item.date > now)
     result.sort((a,b) => Number(a.date) - Number(b.date))
-    return result
+    return result[0]
 }
 
 //Get the indices for each day of the week
@@ -88,6 +102,7 @@ async function getDaysIndex(list:any[]){
 const consultService = {
     newConsult,
     lisMyConsults,
-    nextConsult
+    nextConsult,
+    historic
 }
 export default consultService

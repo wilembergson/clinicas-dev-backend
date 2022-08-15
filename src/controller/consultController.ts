@@ -20,3 +20,9 @@ export async function nextConsults(req:Request, res:Response){
     const result = await consultService.nextConsult(token)
     return res.status(200).json(result)
 }
+
+export async function historic(req:Request, res:Response){
+    const token = res.locals.token
+    const result = await consultService.historic(token)
+    return res.status(200).json(result)
+}
