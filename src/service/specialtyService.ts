@@ -5,7 +5,7 @@ import sucessMessage from "../utils/sucessMessage.js"
 async function newSpecialty(specialty:SpecialtyInsertData){
     const existingSpecialty = await specialtyRepository.getSpecialty(specialty.name)
     if(existingSpecialty !== null) return ErrorMessage(404, "Esta especialidade já está cadastrada.")
-    const fodase = await specialtyRepository.newSpecialty(specialty)
+    await specialtyRepository.newSpecialty(specialty)
     return sucessMessage("Especialidade cadastrada com sucesso.")
 }
 
