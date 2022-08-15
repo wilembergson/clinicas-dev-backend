@@ -1,5 +1,13 @@
-import specialtyRepository from "../repository/specialtyRepository.js"
+import specialtyRepository, { SpecialtyInsertData } from "../repository/specialtyRepository.js"
 import ErrorMessage from "../utils/errorMessage.js"
+import sucessMessage from "../utils/sucessMessage.js"
+
+async function newSpecialty(specialty:SpecialtyInsertData){
+    const existingSpecialty = await specialtyRepository.getSpecialty(specialty.name)
+    if(existingSpecialty !== null) return ErrorMessage(404, "Esta especialidade já está cadastrada.")
+    const fodase = await specialtyRepository.newSpecialty(specialty)
+    return sucessMessage("Especialidade cadastrada com sucesso.")
+}
 
 async function getSpecialtyByName(specialtyName:string){
     const specialty = await specialtyRepository.getSpecialtyWithDaysAndDoctors(specialtyName)
@@ -24,6 +32,7 @@ async function getDaysName(list:any[] | undefined){
 }
 
 const specialtyService = {
+    newSpecialty,
     getSpecialties,
     getSpecialtyByName,
     getDaysAvailable

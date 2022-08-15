@@ -1,6 +1,7 @@
-import {Request, Response, NextFunction} from "express"
+import { NextFunction, Request, Response } from "express"
 
-export default function errorHandler (error, req: Request, res: Response, next: NextFunction) {
+
+export default  function errorHandler (error, req: Request, res: Response, next: NextFunction) {
   if(error.error && error.status){
     return res.status(error.status).json({error: error.error})
   }
