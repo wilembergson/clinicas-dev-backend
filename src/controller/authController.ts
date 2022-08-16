@@ -5,6 +5,7 @@ import authService, { LoginBody, userBody } from "../service/authService.js"
 export async function createNewUser(req:Request, res:Response){
     const newUser:userBody = req.body
     const result = await authService.newUser(newUser)
+    console.log('PASSOU PELO CONTROLLER.')
     return res.status(201).json(result)
 }
 

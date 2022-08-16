@@ -23,7 +23,9 @@ export type LoginBody = {
 async function newUser(userBody:userBody) {
     const { cpf, name, birthDate, phone, email, password, repeatPassword} = userBody
     const user = await userRepository.findUser(cpf)
+    console.log('PASSOU PELO FINDUSER')
     const userByEmail = await userRepository.findUserByEmail(email)
+    console.log('PASSOU PELO FINDEMAIL')
     if(user) return ErrorMessage(401, "Este CPF já está cadastrado.")
     if(userByEmail) return ErrorMessage(401, "Este email já está cadastrado.")
     if(password !== repeatPassword) return ErrorMessage(401, "Repita a senha corretamente.")
@@ -40,6 +42,7 @@ async function newUser(userBody:userBody) {
         active:true
     }
     const result = await userRepository.newUser(newUser)
+    console.log('PASSOU PELO NEWUSER')
     if(!result) ErrorMessage(401, "Não foi possível registrar um novo usuário. Tente novamente.")
     return sucessMessage("Novo usuário cadastrado com sucesso.")
 }

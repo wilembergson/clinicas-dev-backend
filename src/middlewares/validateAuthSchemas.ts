@@ -7,6 +7,7 @@ export function authSchemaMiddleware(schema: ObjectSchema) {
     if (validation.error) {
       return res.status(422).send({ error: validation.error.message });
     }
+    console.log('PASSOU PELO MIDDLEWARE')
     next();
   };
 }
