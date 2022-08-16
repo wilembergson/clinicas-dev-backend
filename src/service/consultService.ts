@@ -74,19 +74,19 @@ async function getDaysIndex(list:any[]){
             case 'DOMINGO':
                 result.push(6)
                 break
-            case 'SEGUNDA-FEIRA':
+            case 'SEGUNDA':
                 result.push(0)
                 break
-            case 'TERÇA-FEIRA':
+            case 'TERÇA':
                 result.push(1)
                 break
-            case 'QUARTA-FEIRA':
+            case 'QUARTA':
                 result.push(2)
                 break
-            case 'QUINTA-FEIRA':
+            case 'QUINTA':
                 result.push(3)
                 break
-            case 'SEXTA-FEIRA':
+            case 'SEXTA':
                 result.push(4)
                 break
             case 'SÁBADO':
