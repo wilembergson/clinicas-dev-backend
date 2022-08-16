@@ -72,25 +72,25 @@ async function getDaysIndex(list:any[]){
     days.forEach(item => {
         switch(item){
             case 'DOMINGO':
-                result.push(6)
-                break
-            case 'SEGUNDA':
                 result.push(0)
                 break
-            case 'TERÇA':
+            case 'SEGUNDA':
                 result.push(1)
                 break
-            case 'QUARTA':
+            case 'TERÇA':
                 result.push(2)
                 break
-            case 'QUINTA':
+            case 'QUARTA':
                 result.push(3)
                 break
-            case 'SEXTA':
+            case 'QUINTA':
                 result.push(4)
                 break
-            case 'SÁBADO':
+            case 'SEXTA':
                 result.push(5)
+                break
+            case 'SÁBADO':
+                result.push(6)
                 break
             default:
                 break
