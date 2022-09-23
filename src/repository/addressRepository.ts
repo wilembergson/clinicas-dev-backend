@@ -21,8 +21,18 @@ async function getAddress(userId:number){
     })
 }
 
+async function updateAddress(addressId:number,address:AddressInsertData){
+    return await prisma.address.update({
+        where: {
+            id:addressId
+        },
+        data: address
+    })
+}
+
 const addressRepository = {
     newAddress,
-    getAddress
+    getAddress,
+    updateAddress
 }
 export default addressRepository

@@ -1,4 +1,4 @@
-import { UsersAddresses } from "@prisma/client"
+import { Address, UsersAddresses } from "@prisma/client"
 
 import prisma from "../config/database.js"
 
