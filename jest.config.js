@@ -1,0 +1,19 @@
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  collectCoverageFrom: ['<rootDir>/src/core/**/*.ts', '!<rootDir>/src/core/**/index.ts'],
+  coveragePathIgnorePatterns: [],
+  moduleNameMapper: {
+    '~/test/(.+)': '<rootDir>/test/$1',
+    '@domain/(.+)': '<rootDir>/src/core/domain/$1',
+    '@application/(.+)': '<rootDir>/src/core/application/$1',
+    '@infra/(.+)': '<rootDir>/src/core/infra/$1'
+  },
+  coverageDirectory: 'coverage',
+  coverageProvider: 'babel',
+  roots: ['<rootDir>/src', '<rootDir>/test'],
+  testMatch: ['**/*.spec.ts'],
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
+};
