@@ -1,6 +1,6 @@
 import { ID } from "./id"
 
-export class User {
+export class Account {
     private id: ID
     private cpf: string
     private name: string
@@ -9,11 +9,11 @@ export class User {
     private email: string
     private password: string
 
-    constructor({id, ...rest}: User.Constructor){
+    constructor({id, ...rest}: Account.Constructor){
         Object.assign(this, rest, {id: new ID(id)})
     }
 
-    getState(): User.State{
+    getState(): Account.State{
         return {
             id: this.id.value,
             cpf: this.cpf,
@@ -25,7 +25,7 @@ export class User {
         }
     }
 
-    getStateWithoutID(): User.StateWithoutID{
+    getStateWithoutID(): Account.StateWithoutID{
         return {
             cpf: this.cpf,
             name: this.name,
@@ -37,7 +37,7 @@ export class User {
     }
 }
 
-export namespace User {
+export namespace Account {
     export type Constructor = {
         id?: string
         cpf: string
