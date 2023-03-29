@@ -1,15 +1,23 @@
-import { CpfFormatValidation, RequiredFieldValidation, ValidationComposite } from "../../../application/validators";
-import { ExistentCpfValidation } from "../../../application/validators/existent-cpf-validation";
-import { CpfValidatorAdapter } from "../../adapters";
+import { findAccountByCpfFactory, findAccountByEmailFactory } from "../use-cases";
+import { CpfValidatorAdapter, EmailValidatorAdapter } from "../../adapters";
 import { Validation } from "../../protocols";
-import { findAccountFactory } from "../use-cases";
+import {
+    CpfFormatValidation,
+    EmailFormatValidation,
+    ExistentCpfValidation,
+    ExistentEmailValidation,
+    RequiredFieldValidation,
+    ValidationComposite
+} from "../../../application/validators";
 
-export function signupValidationFactory(): ValidationComposite{
+export function signupValidationFactory(): ValidationComposite {
     const validations: Validation[] = []
-    for(const field of ['cpf', "name", "birthdate", "phone", "email", "password"]){
+    for (const field of ['cpf', "name", "birthdate", "phone", "email", "password"]) {
         validations.push(new RequiredFieldValidation(field))
     }
     validations.push(new CpfFormatValidation(new CpfValidatorAdapter()))
-    validations.push(new ExistentCpfValidation(findAccountFactory()))
+    validations.push(new ExistentCpfValidation(findAccountByCpfFactory()))
+    validations.push(new EmailFormatValidation(new EmailValidatorAdapter()))
+    validations.push(new ExistentEmailValidation(findAccountByEmailFactory()))
     return new ValidationComposite(validations)
 }

@@ -1,8 +1,8 @@
-export interface FindAccount {
-    execute(cpf: string): Promise<FindAccount.Output>
+export interface FindAccountByCpf {
+    execute(cpf: string): Promise<FindAccountByCpf.Output>
 }
 
-export namespace FindAccount {
+export namespace FindAccountByCpf {
     export type Output = {
         cpf: string
         name: string

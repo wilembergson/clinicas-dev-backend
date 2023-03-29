@@ -1,4 +1,4 @@
-import { SignupUsecase } from "../../../application/use-cases.ts/signup";
+import { SignupUsecase } from "../../../application/use-cases/signup";
 import { BcryptAdapter } from "../../cryptografy/bcrypt-adapter/bcrypt-adapter";
 import { DbRepositoryFactory } from "../repositories";
 
