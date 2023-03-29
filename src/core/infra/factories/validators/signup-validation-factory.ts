@@ -9,12 +9,11 @@ import {
     RequiredFieldValidation,
     ValidationComposite
 } from "../../../application/validators";
+import { accountSchema } from "../../../application/schemas";
 
 export function signupValidationFactory(): ValidationComposite {
     const validations: Validation[] = []
-    for (const field of ['cpf', "name", "birthdate", "phone", "email", "password"]) {
-        validations.push(new RequiredFieldValidation(field))
-    }
+    validations.push(new RequiredFieldValidation(accountSchema))
     validations.push(new CpfFormatValidation(new CpfValidatorAdapter()))
     validations.push(new ExistentCpfValidation(findAccountByCpfFactory()))
     validations.push(new EmailFormatValidation(new EmailValidatorAdapter()))
