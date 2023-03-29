@@ -1,0 +1,6 @@
+export * from './invalid-cpf-exception'
+export * from './missing-param-exception'
+export * from './server-exception'
+export * from './exists-cpf-exception'
+export * from './not-found-cpf-exception'
+export * from './base-exception'

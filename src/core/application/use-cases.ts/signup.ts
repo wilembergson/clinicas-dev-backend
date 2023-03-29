@@ -1,13 +1,20 @@
 import { Account } from "../../domain/entities";
+import { RepositoryFactory } from "../../domain/factories";
 import { AccountRepository } from "../../domain/repositories";
 import { Signup } from "../../domain/use-cases/signup";
 import { Hasher } from "../protocols/cryptografy/hasher";
 
 export class SignupUsecase implements Signup {
+    private readonly accountRepository: AccountRepository
+    private readonly hasher: Hasher
+    
     constructor(
-        private readonly hasher: Hasher,
-        private readonly accountRepository: AccountRepository
-    ) { }
+        repositoryFactory: RepositoryFactory,
+        hasher: Hasher
+    ) { 
+        this.accountRepository = repositoryFactory.accountRepository()
+        this.hasher = hasher
+    }
 
     async execute(input: Signup.Input): Promise<Signup.Output> {
         const foundAccount = await this.accountRepository.findByCpf(input.cpf)
