@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import { HttpRequest } from "../../../../../src/core/infra/protocols";
 import { ExistentEmailValidation } from "../../../../../src/core/application/validators";
 import { ConnectionDatabase } from "../../../../../src/core/infra/database/connection-database";
-import { FindAccountByCpfUsecase } from "../../../../../src/core/application/use-cases";
+import { FindAccountByCpfUsecase, FindAccountByEmailUsecase } from "../../../../../src/core/application/use-cases";
 import { DbRepositoryFactory } from "../../../../../src/core/infra/factories/repositories";
 import { Account } from "../../../../../src/core/domain/entities";
 import { ExistsEmailException } from "../../../../../src/core/application/exceptions";
@@ -11,14 +11,14 @@ import { FindAccountByEmail } from "../../../../../src/core/domain/use-cases/fin
 
 let connection: ConnectionDatabase
 let repositoryFactory: DbRepositoryFactory
-let findAccountByCpfUsecase: FindAccountByEmail
+let findAccountByEmailUsecase: FindAccountByEmail
 let sut: ExistentEmailValidation
 
 beforeAll(() => {
     connection = new ConnectionDatabase()
     repositoryFactory = new DbRepositoryFactory()
-    findAccountByCpfUsecase = new FindAccountByCpfUsecase(repositoryFactory)
-    sut = new ExistentEmailValidation(findAccountByCpfUsecase)
+    findAccountByEmailUsecase = new FindAccountByEmailUsecase(repositoryFactory)
+    sut = new ExistentEmailValidation(findAccountByEmailUsecase)
 })
 afterEach(async () => {
     await connection.clearStorage('account')
@@ -51,8 +51,6 @@ function makeRequestWithBodyData(email: string): HttpRequest {
     }
 }
 
-
-
 describe('Existent account validation', () => {
     it('should find a registred account passing data body', async () => {
         const email = generateEmail()
@@ -60,7 +58,6 @@ describe('Existent account validation', () => {
             data: addNewAccount(email)
         })
         const error = await sut.validate(makeRequestWithBodyData(email))
-        console.log(error)
         expect(error).toEqual(new ExistsEmailException())
     })
 

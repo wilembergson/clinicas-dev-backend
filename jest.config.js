@@ -2,7 +2,10 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   collectCoverageFrom: ['<rootDir>/src/core/**/*.ts', '!<rootDir>/src/core/**/index.ts'],
-  coveragePathIgnorePatterns: [],
+  /*coveragePathIgnorePatterns: [
+    '<rootDir>/src/core/infra/protocols',
+    '<rootDir>/src/core/infra/helpers/db'
+  ],*/
   moduleNameMapper: {
     '~/test/(.+)': '<rootDir>/test/$1',
     '@domain/(.+)': '<rootDir>/src/core/domain/$1',
