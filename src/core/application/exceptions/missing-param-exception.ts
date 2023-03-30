@@ -4,7 +4,7 @@ export class MissingParamError extends BaseException {
   constructor(paramName: string) {
     super(
       'MissingParamError',
-      `Missing param: ${paramName}`,
+      `${paramName}`,
       422
     )
   }
