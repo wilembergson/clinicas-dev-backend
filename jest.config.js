@@ -4,6 +4,7 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/src/core/**/*.ts', '!<rootDir>/src/core/**/index.ts'],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/core/application/schemas',
+    '<rootDir>/src/core/infra/config'
   ],
   moduleNameMapper: {
     '~/test/(.+)': '<rootDir>/test/$1',
