@@ -21,7 +21,9 @@ export class SignupUsecase implements Signup {
         if (!foundAccount) {
             const hashedPassword = await this.hasher.hash(input.password)
             const account = new Account(Object.assign({}, input, { password: hashedPassword }))
-            return await this.accountRepository.add(account)
+            const result = await this.accountRepository.add(account)
+            const {id, password, ...accountInformations} = result
+            return accountInformations
         }
         return null
     }

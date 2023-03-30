@@ -14,6 +14,6 @@ export class FindAccountByCpfUsecase implements FindAccountByCpf {
         const result = await this.accountRepository.findByCpf(input)
         if (!result) return null
         const account = new Account(result)
-        return account.getStateWithoutID()
+        return account.getInformations()
     }
 }

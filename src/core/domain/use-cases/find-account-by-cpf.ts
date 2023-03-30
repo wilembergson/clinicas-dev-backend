@@ -9,6 +9,5 @@ export namespace FindAccountByCpf {
         birthdate: string
         phone: string
         email: string
-        password: string
     }
 }

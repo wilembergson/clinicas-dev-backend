@@ -14,6 +14,6 @@ export class FindAccountByEmailUsecase implements FindAccountByEmail {
         const result = await this.accountRepository.findByEmail(input)
         if (!result) return null
         const account = new Account(result)
-        return account.getStateWithoutID()
+        return account.getInformations()
     }
 }

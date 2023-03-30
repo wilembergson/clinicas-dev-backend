@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker"
 import { generate } from 'cpf'
 import { Account } from "../../../../src/core/domain/entities"
 
-function makeAccount(){
+function makeAccount() {
     return new Account({
         id: faker.datatype.uuid(),
         cpf: generate().replace(/[-.]/g, ""),
@@ -22,15 +22,14 @@ describe('Cpf', () => {
 
     it('should be able to get state.', () => {
         const account = makeAccount()
-        expect(account.getStateWithoutID()).toHaveProperty('cpf')
-        expect(account.getStateWithoutID()).toHaveProperty('name')
-        expect(account.getStateWithoutID()).toHaveProperty('birthdate')
-        expect(account.getStateWithoutID()).toHaveProperty('phone')
-        expect(account.getStateWithoutID()).toHaveProperty('email')
-        expect(account.getStateWithoutID()).toHaveProperty('password')
-      })
+        expect(account.getInformations()).toHaveProperty('cpf')
+        expect(account.getInformations()).toHaveProperty('name')
+        expect(account.getInformations()).toHaveProperty('birthdate')
+        expect(account.getInformations()).toHaveProperty('phone')
+        expect(account.getInformations()).toHaveProperty('email')
+    })
 
-      it('should be able to get state without ID', () => {
+    it('should be able to get state without ID', () => {
         const account = makeAccount()
         expect(account.getState()).toHaveProperty('cpf')
         expect(account.getState()).toHaveProperty('name')
@@ -38,5 +37,5 @@ describe('Cpf', () => {
         expect(account.getState()).toHaveProperty('phone')
         expect(account.getState()).toHaveProperty('email')
         expect(account.getState()).toHaveProperty('password')
-      })
+    })
 })

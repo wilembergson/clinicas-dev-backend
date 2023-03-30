@@ -9,6 +9,5 @@ export namespace FindAccountByEmail {
         birthdate: string
         phone: string
         email: string
-        password: string
     }
 }

@@ -12,12 +12,10 @@ export namespace Signup {
         password: string
     }
     export type Output = {
-        id: string
         cpf: string
         name: string
         birthdate: string
         phone: string
         email: string
-        password: string
     }
 }
