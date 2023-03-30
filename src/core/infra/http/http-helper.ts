@@ -21,5 +21,7 @@ export const ok = (data: any): HttpResponse => ({
 
 export const created = (): HttpResponse => ({
   statusCode: 201,
-  body: undefined
+  body: {
+    message: "Account created."
+  }
 })
