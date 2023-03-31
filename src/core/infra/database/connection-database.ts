@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { Database } from "./databese";
+import { Database } from './databese';
 
 export class ConnectionDatabase implements Database<PrismaClient>{
     private client: PrismaClient

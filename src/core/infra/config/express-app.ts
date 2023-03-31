@@ -1,7 +1,7 @@
 import express from "express";
 import "express-async-errors"
 import cors from "cors"
-import serverRouter from "../routes/sever.router"
+import serverRouter from "@infra/routes/sever.router";
 
 export class ExpressApp {
     private readonly app: express.Application

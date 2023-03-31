@@ -1,6 +1,6 @@
-import { Signup } from "../../domain/use-cases/signup";
-import { badRequest, created, serverError } from "../http/http-helper";
-import { Controller, HttpRequest, HttpResponse, Validation } from "../protocols";
+import { Signup } from "@domain/use-cases/signup";
+import { badRequest, created, serverError } from "@infra/http/http-helper";
+import { Controller, HttpRequest, HttpResponse, Validation } from "@infra/protocols";
 
 export class SignupController implements Controller {
     constructor(

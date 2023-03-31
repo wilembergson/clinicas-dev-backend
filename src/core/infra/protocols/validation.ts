@@ -1,4 +1,4 @@
-import { BaseException } from "../../application/exceptions";
+import { BaseException } from "@application/exceptions";
 
 export interface Validation{
     validate(input: any): Promise<BaseException>

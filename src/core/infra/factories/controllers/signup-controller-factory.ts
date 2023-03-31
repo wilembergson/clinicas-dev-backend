@@ -1,7 +1,8 @@
-import { SignupController } from "../../controllers/signup-controller";
-import { Controller } from "../../protocols";
-import { signupFactory } from "../use-cases/signup-factory";
+import { SignupController } from "@infra/controllers/signup-controller";
+import { Controller } from "@infra/protocols";
 import { signupValidationFactory } from "../validators/signup-validation-factory";
+import { signupFactory } from "../use-cases";
+
 
 export function signupControllerFactory(): Controller {
     return new SignupController(signupValidationFactory(),signupFactory())

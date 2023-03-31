@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker"
-import { ID } from "../../../../src/core/domain/entities"
+import { ID } from "@domain/entities"
 
 describe('ID', () => {
     it('should be possible create a instance.', () => {

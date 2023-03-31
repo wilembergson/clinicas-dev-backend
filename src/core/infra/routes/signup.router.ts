@@ -1,6 +1,6 @@
+import { adaptRoute } from "@infra/adapters";
+import { signupControllerFactory } from "@infra/factories/controllers";
 import { Router } from "express";
-import { adaptRoute } from "../adapters";
-import { signupControllerFactory } from "../factories/controllers";
 
 const signupRouter = Router()
 

@@ -1,9 +1,9 @@
-import { faker } from "@faker-js/faker";
-import { CpfValidator, HttpRequest } from "../../../../../src/core/infra/protocols";
-import { InvalidCpfException } from "../../../../../src/core/application/exceptions";
-import { CpfFormatValidation } from "../../../../../src/core/application/validators";
 import { generate } from "cpf";
-import { CpfValidatorAdapter } from "../../../../../src/core/infra/adapters/cpf-validator-adapter";
+import { faker } from "@faker-js/faker";
+import { InvalidCpfException } from "@application/exceptions";
+import { CpfFormatValidation } from "@application/validators";
+import { CpfValidator, HttpRequest } from "@infra/protocols";
+import { CpfValidatorAdapter } from "@infra/adapters";
 
 let cpfValidator: CpfValidator
 let sut: CpfFormatValidation

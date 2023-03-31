@@ -1,13 +1,13 @@
 import { generate } from "cpf";
 import { faker } from "@faker-js/faker";
-import { HttpRequest } from "../../../../../src/core/infra/protocols";
-import { ExistentEmailValidation } from "../../../../../src/core/application/validators";
-import { ConnectionDatabase } from "../../../../../src/core/infra/database/connection-database";
-import { FindAccountByCpfUsecase, FindAccountByEmailUsecase } from "../../../../../src/core/application/use-cases";
-import { DbRepositoryFactory } from "../../../../../src/core/infra/factories/repositories";
-import { Account } from "../../../../../src/core/domain/entities";
-import { ExistsEmailException } from "../../../../../src/core/application/exceptions";
-import { FindAccountByEmail } from "../../../../../src/core/domain/use-cases/find-account-by-email";
+import { FindAccountByEmail } from "@domain/use-cases/find-account-by-email";
+import { ConnectionDatabase } from "@infra/database/connection-database";
+import { DbRepositoryFactory } from "@infra/factories/repositories";
+import { FindAccountByEmailUsecase } from "@application/use-cases";
+import { ExistentEmailValidation } from "@application/validators";
+import { ExistsEmailException } from "@application/exceptions";
+import { HttpRequest } from "@infra/protocols";
+import { Account } from "@domain/entities";
 
 let connection: ConnectionDatabase
 let repositoryFactory: DbRepositoryFactory

@@ -1,4 +1,4 @@
-import { CpfValidator } from "../protocols";
+import { CpfValidator } from '@infra/protocols';
 import cpf  from 'cpf'
 
 const cpfRegex = /^\d{11}$/;

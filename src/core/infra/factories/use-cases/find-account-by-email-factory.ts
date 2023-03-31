@@ -1,4 +1,4 @@
-import { FindAccountByEmailUsecase } from "../../../application/use-cases/index"
+import { FindAccountByEmailUsecase } from "@application/use-cases"
 import { DbRepositoryFactory } from "../repositories"
 
 export function findAccountByEmailFactory() {

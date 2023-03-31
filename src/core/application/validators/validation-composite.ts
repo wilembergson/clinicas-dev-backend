@@ -1,5 +1,5 @@
-import { HttpRequest, Validation } from "../../infra/protocols";
-import { BaseException } from "../exceptions";
+import { BaseException } from "@application/exceptions"
+import { HttpRequest, Validation } from "@infra/protocols"
 
 export class ValidationComposite implements Validation{
     constructor(

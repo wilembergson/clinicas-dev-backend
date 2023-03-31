@@ -1,5 +1,5 @@
-import { EmailValidator, HttpRequest, Validation } from "../../infra/protocols";
-import { BaseException, InvalidEmailException } from "../exceptions";
+import { BaseException, InvalidEmailException } from "@application/exceptions"
+import { EmailValidator, HttpRequest, Validation } from "@infra/protocols"
 
 export class EmailFormatValidation implements Validation {
     constructor(

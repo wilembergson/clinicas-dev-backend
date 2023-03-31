@@ -1,4 +1,4 @@
-import { FindAccountByCpfUsecase } from "../../../application/use-cases/index"
+import { FindAccountByCpfUsecase } from "@application/use-cases"
 import { DbRepositoryFactory } from "../repositories"
 
 export function findAccountByCpfFactory() {

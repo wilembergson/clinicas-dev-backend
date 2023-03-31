@@ -1,10 +1,10 @@
 import { generate } from "cpf"
 import { faker } from "@faker-js/faker"
-import { Account } from "../../../../../src/core/domain/entities"
-import { FindAccountByCpfUsecase } from "../../../../../src/core/application/use-cases"
-import { DbRepositoryFactory } from "../../../../../src/core/infra/factories/repositories"
-import { FindAccountByCpf } from "../../../../../src/core/domain/use-cases/find-account-by-cpf"
-import { ConnectionDatabase } from "../../../../../src/core/infra/database/connection-database"
+import { ConnectionDatabase } from "@infra/database/connection-database"
+import { DbRepositoryFactory } from "@infra/factories/repositories"
+import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf"
+import { FindAccountByCpfUsecase } from "@application/use-cases"
+import { Account } from "@domain/entities"
 
 describe('FindAccountByCpf', () => {
     let connection: ConnectionDatabase

@@ -1,10 +1,8 @@
-import { faker } from "@faker-js/faker";
-import { RequiredFieldValidation } from "../../../../../src/core/application/validators/required-field-validation";
-import { HttpRequest } from "../../../../../src/core/infra/protocols";
-import { MissingParamError } from "../../../../../src/core/application/exceptions";
-import { accountSchema } from "../../../../../src/core/application/schemas";
-import { generate } from "cpf";
-import Joi from "joi";
+import Joi from "joi"
+import { faker } from "@faker-js/faker"
+import { RequiredFieldValidation } from "@application/validators"
+import { MissingParamError } from "@application/exceptions"
+import { HttpRequest } from "@infra/protocols"
 
 const schema = Joi.object({
     name:Joi.string().required(),

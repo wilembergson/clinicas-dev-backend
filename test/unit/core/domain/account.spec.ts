@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker"
 import { generate } from 'cpf'
-import { Account } from "../../../../src/core/domain/entities"
+import { Account } from "@domain/entities"
 
 function makeAccount() {
     return new Account({

@@ -1,8 +1,8 @@
+import { InvalidEmailException } from "@application/exceptions";
+import { EmailFormatValidation } from "@application/validators";
 import { faker } from "@faker-js/faker";
-import { EmailValidator, HttpRequest } from "../../../../../src/core/infra/protocols";
-import { InvalidEmailException } from "../../../../../src/core/application/exceptions";
-import { EmailFormatValidation } from "../../../../../src/core/application/validators";
-import { EmailValidatorAdapter } from "../../../../../src/core/infra/adapters";
+import { EmailValidatorAdapter } from "@infra/adapters";
+import { EmailValidator, HttpRequest } from "@infra/protocols";
 
 let emailValidator: EmailValidator
 let sut: EmailFormatValidation

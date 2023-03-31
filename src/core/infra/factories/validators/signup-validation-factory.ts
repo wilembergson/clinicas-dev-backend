@@ -1,6 +1,7 @@
+import { Validation } from "@infra/protocols";
+import { accountSchema } from "@application/schemas";
+import { CpfValidatorAdapter, EmailValidatorAdapter } from "@infra/adapters";
 import { findAccountByCpfFactory, findAccountByEmailFactory } from "../use-cases";
-import { CpfValidatorAdapter, EmailValidatorAdapter } from "../../adapters";
-import { Validation } from "../../protocols";
 import {
     CpfFormatValidation,
     EmailFormatValidation,
@@ -8,8 +9,7 @@ import {
     ExistentEmailValidation,
     RequiredFieldValidation,
     ValidationComposite
-} from "../../../application/validators";
-import { accountSchema } from "../../../application/schemas";
+} from "@application/validators";
 
 export function signupValidationFactory(): ValidationComposite {
     const validations: Validation[] = []

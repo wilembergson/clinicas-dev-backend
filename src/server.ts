@@ -1,4 +1,4 @@
-import { ExpressApp } from "./core/infra/config"
+import { ExpressApp } from "@infra/config";
 import dotenv from "dotenv"
 
 dotenv.config()

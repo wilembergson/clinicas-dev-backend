@@ -1,6 +1,7 @@
-import { FindAccountByCpf } from "../../domain/use-cases/find-account-by-cpf";
-import { HttpRequest, Validation } from "../../infra/protocols";
-import { BaseException, ExistsCpfException } from "../exceptions";
+import { BaseException, ExistsCpfException } from "@application/exceptions"
+import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf"
+import { HttpRequest, Validation } from "@infra/protocols"
+
 
 export class ExistentCpfValidation implements Validation {
     constructor(

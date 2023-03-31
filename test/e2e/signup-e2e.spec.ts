@@ -1,8 +1,8 @@
 import { generate } from "cpf";
 import supertest from "supertest";
 import { faker } from "@faker-js/faker";
-import { ExpressApp } from "../../src/core/infra/config/express-app";
-import { ConnectionDatabase } from "../../src/core/infra/database/connection-database";
+import { ExpressApp } from "@infra/config";
+import { ConnectionDatabase } from "@infra/database/connection-database";
 
 
 async function makeRequest(): Promise<any> {

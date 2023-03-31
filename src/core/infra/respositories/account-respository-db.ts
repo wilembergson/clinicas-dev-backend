@@ -1,6 +1,6 @@
-import { Account } from "../../domain/entities";
-import { AccountRepository } from "../../domain/repositories";
-import { ConnectionDatabase } from "../database/connection-database";
+import { Account } from "@domain/entities"
+import { AccountRepository } from "@domain/repositories"
+import { ConnectionDatabase } from "@infra/database/connection-database"
 
 export class AccountRepositoryDb implements AccountRepository {
     constructor(

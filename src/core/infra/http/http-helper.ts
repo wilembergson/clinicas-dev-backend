@@ -1,6 +1,5 @@
-import { BaseException, ServerError } from "../../application/exceptions"
-import { HttpResponse } from "../protocols"
-
+import { BaseException, ServerError } from "@application/exceptions"
+import { HttpResponse } from "@infra/protocols"
 
 export function badRequest(error: BaseException): HttpResponse {
   return {

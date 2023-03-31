@@ -1,5 +1,5 @@
-import { CpfValidator, HttpRequest, Validation } from "../../infra/protocols";
-import { BaseException, InvalidCpfException } from "../exceptions";
+import { BaseException, InvalidCpfException } from "@application/exceptions"
+import { CpfValidator, HttpRequest, Validation } from "@infra/protocols"
 
 export class CpfFormatValidation implements Validation{
     constructor(

@@ -1,6 +1,7 @@
-import { FindAccountByEmail } from "../../domain/use-cases/find-account-by-email";
-import { HttpRequest, Validation } from "../../infra/protocols";
-import { BaseException, ExistsEmailException } from "../exceptions";
+import { BaseException, ExistsEmailException } from "@application/exceptions"
+import { FindAccountByEmail } from "@domain/use-cases/find-account-by-email"
+import { HttpRequest, Validation } from "@infra/protocols"
+
 
 export class ExistentEmailValidation implements Validation {
     constructor(

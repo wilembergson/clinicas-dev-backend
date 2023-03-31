@@ -1,7 +1,7 @@
-import { Account } from "../../domain/entities";
-import { RepositoryFactory } from "../../domain/factories";
-import { AccountRepository } from "../../domain/repositories";
-import { FindAccountByCpf } from "../../domain/use-cases/find-account-by-cpf";
+import { Account } from "@domain/entities"
+import { RepositoryFactory } from "@domain/factories"
+import { AccountRepository } from "@domain/repositories"
+import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf"
 
 export class FindAccountByCpfUsecase implements FindAccountByCpf {
     private readonly accountRepository: AccountRepository

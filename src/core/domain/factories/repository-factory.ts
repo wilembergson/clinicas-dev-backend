@@ -1,4 +1,4 @@
-import { AccountRepository } from "../repositories";
+import { AccountRepository } from "@domain/repositories";
 
 export interface RepositoryFactory{
     accountRepository(): AccountRepository

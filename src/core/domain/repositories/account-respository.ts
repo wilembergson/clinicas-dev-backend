@@ -1,4 +1,4 @@
-import { Account } from "../entities";
+import { Account } from "@domain/entities"
 
 export interface AccountRepository{
     add(data: Account): Promise<Account.State>

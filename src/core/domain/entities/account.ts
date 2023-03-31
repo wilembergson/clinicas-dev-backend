@@ -1,5 +1,6 @@
 import { ID } from "./id"
 
+
 export class Account {
     private id: ID
     private cpf: string

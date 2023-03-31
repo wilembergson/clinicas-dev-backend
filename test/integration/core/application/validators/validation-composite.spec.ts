@@ -1,7 +1,7 @@
-import { BaseException } from "../../../../../src/core/application/exceptions"
-import { ValidationComposite } from "../../../../../src/core/application/validators"
-import { HttpRequest, Validation } from "../../../../../src/core/infra/protocols"
 import { generate } from "cpf"
+import { ValidationComposite } from "@application/validators"
+import { HttpRequest, Validation } from "@infra/protocols"
+import { BaseException } from "@application/exceptions"
 
 type SutTypes = {
     sut: ValidationComposite
