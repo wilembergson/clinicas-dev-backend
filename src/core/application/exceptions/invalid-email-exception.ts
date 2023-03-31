@@ -4,7 +4,7 @@ export class InvalidEmailException extends BaseException {
   constructor() {
     super(
       'InvalidEmailError',
-      'Invalid Email',
+      'Invalid email format',
       422
     )
   }

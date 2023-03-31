@@ -11,8 +11,8 @@ export class ExistentCpfValidation implements Validation {
     async validate(input: HttpRequest): Promise<BaseException> {
         let paramCpf: string
         (input.body.cpf ? paramCpf = input.body.cpf : paramCpf = input.params.cpf)
-        const cpf = await this.findAccount.execute(paramCpf)
-        if (cpf) return new ExistsCpfException()
+        const account = await this.findAccount.execute(paramCpf)
+        if (account) return new ExistsCpfException()
     }
 
 }

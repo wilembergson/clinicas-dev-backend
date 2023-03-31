@@ -1,5 +1,5 @@
 import { Router } from "express";
-import signupRouter from "./signup.router";
+import signupRouter from "./signup-login.router";
 
 const serverRouter = Router()
 

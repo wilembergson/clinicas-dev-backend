@@ -1,8 +1,9 @@
-import { BaseException, ExistsEmailException } from "@application/exceptions"
+import { BaseException, NotFoundEmailException } from "@application/exceptions"
 import { FindAccountByEmail } from "@domain/use-cases/find-account-by-email"
 import { HttpRequest, Validation } from "@infra/protocols"
 
-export class ExistentEmailValidation implements Validation {
+
+export class NotFoudEmailValidation implements Validation {
     constructor(
         private readonly findAccount: FindAccountByEmail
     ) { }
@@ -10,7 +11,7 @@ export class ExistentEmailValidation implements Validation {
     async validate(input: HttpRequest): Promise<BaseException> {
         const paramEmail = input.body.email
         const account = await this.findAccount.execute(paramEmail)
-        if (account) return new ExistsEmailException()
+        if (!account) return new NotFoundEmailException()
     }
 
 }

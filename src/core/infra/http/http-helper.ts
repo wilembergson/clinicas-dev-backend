@@ -24,3 +24,10 @@ export const created = (): HttpResponse => ({
     message: "Account created."
   }
 })
+
+export const logged = (token: string): HttpResponse => ({
+  statusCode: 200,
+  body: {
+    token
+  }
+})

@@ -1,6 +1,6 @@
 import { generate } from "cpf"
 import { faker } from "@faker-js/faker"
-import { BcryptAdapter } from "@infra/cryptografy/bcrypt-adapter/bcrypt-adapter"
+import { BcryptAdapter } from "@infra/cryptografy/bcrypt-adapter"
 import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
 import { Hasher } from "@application/protocols/cryptografy/hasher"

@@ -1,6 +1,6 @@
-import { BcryptAdapter } from "@infra/cryptografy/bcrypt-adapter/bcrypt-adapter"
 import { SignupUsecase } from "@application/use-cases"
 import { DbRepositoryFactory } from "../repositories"
+import { BcryptAdapter } from "@infra/cryptografy"
 
 export function signupFactory() {
     const repositoryFactory = new DbRepositoryFactory()
