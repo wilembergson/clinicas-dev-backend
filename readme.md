@@ -48,7 +48,7 @@ $ npm run dev
 {
   "cpf":"111.222.333-44",
   "name":"Junior Silva",
-  "birthDate":"1995-01-08",
+  "birthdate":"1995-01-08",
   "phone":"83988775544",
   "email":"juniorsilva@gmail.com",
   "password":"exemploPassword123"
