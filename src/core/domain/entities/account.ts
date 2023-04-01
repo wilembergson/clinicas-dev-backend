@@ -35,6 +35,16 @@ export class Account {
             email: this.email
         }
     }
+    getInformationsWithPassword(): Account.InformationsWithPassword {
+        return {
+            cpf: this.cpf,
+            name: this.name,
+            birthdate: this.birthdate,
+            phone: this.phone,
+            email: this.email,
+            password: this.password
+        }
+    }
 }
 
 export namespace Account {
@@ -49,6 +59,14 @@ export namespace Account {
     }
     export type State = {
         id: string
+        cpf: string
+        name: string
+        birthdate: string
+        phone: string
+        email: string
+        password: string
+    }
+    export type InformationsWithPassword = {
         cpf: string
         name: string
         birthdate: string

@@ -32,6 +32,13 @@ $ npm run up
 ```
 </br>
 
+### Execultando os testes
+```bash
+# Mostra a cobertura dos teste
+$ npm run test:cov
+```
+</br>
+
 ### Executando em desenvolvimento
 ```bash
 # development
@@ -56,7 +63,8 @@ $ npm run dev
 ``` 
 </br></br>
 - - -
-- Login</br> 
+- Login
+</br> 
 (GET): **/login**
 ```bash
 # body
@@ -73,3 +81,6 @@ $ npm run dev
 ``` 
 </br></br>
 - - -
+</br>
+
+## refatorando...
