@@ -47,7 +47,6 @@ $ npm run dev
 </br>
 
 ### Rotas
-- - -
 - Signup</br> 
 (POST): **/signup**
 ```bash
@@ -62,9 +61,10 @@ $ npm run dev
 }
 ``` 
 </br></br>
-- - -
+
 - Login
 </br> 
+
 (GET): **/login**
 ```bash
 # body
@@ -80,4 +80,3 @@ $ npm run dev
 }
 ``` 
 </br></br>
-- - -
