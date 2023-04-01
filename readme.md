@@ -81,6 +81,3 @@ $ npm run dev
 ``` 
 </br></br>
 - - -
-</br>
-
-## refatorando...
