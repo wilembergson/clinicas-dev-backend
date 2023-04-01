@@ -16,7 +16,6 @@ export class LoginUsecase implements Login {
 
     async execute(input: Login.Input): Promise<string> {
         const account = await this.accountRepository.findByEmail(input.email)
-        if (!account) return null
         const isValid = await this.hashComparer.compare(input.password, account.password)
         if (isValid) {
             const token = await this.encrypter.encrypt({
