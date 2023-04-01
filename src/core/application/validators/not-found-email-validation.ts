@@ -3,7 +3,7 @@ import { FindAccountByEmail } from "@domain/use-cases/find-account-by-email"
 import { HttpRequest, Validation } from "@infra/protocols"
 
 
-export class NotFoudEmailValidation implements Validation {
+export class NotFoundEmailValidation implements Validation {
     constructor(
         private readonly findAccount: FindAccountByEmail
     ) { }

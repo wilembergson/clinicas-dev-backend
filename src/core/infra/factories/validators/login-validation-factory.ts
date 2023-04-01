@@ -4,7 +4,7 @@ import { EmailValidatorAdapter } from "@infra/adapters";
 import { findAccountByEmailFactory } from "../use-cases";
 import {
     EmailFormatValidation,
-    NotFoudEmailValidation,
+    NotFoundEmailValidation,
     PasswordValidation,
     RequiredFieldValidation,
     ValidationComposite
@@ -16,7 +16,7 @@ export function loginValidationFactory(): ValidationComposite {
     const validations: Validation[] = []
     validations.push(new RequiredFieldValidation(loginSchema))
     validations.push(new EmailFormatValidation(new EmailValidatorAdapter()))
-    validations.push(new NotFoudEmailValidation(findAccountByEmailFactory()))
+    validations.push(new NotFoundEmailValidation(findAccountByEmailFactory()))
     validations.push(new PasswordValidation(new BcryptAdapter(10), new DbRepositoryFactory()))
     return new ValidationComposite(validations)
 }
