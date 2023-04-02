@@ -1,13 +1,13 @@
 import { generate } from "cpf";
 import { faker } from "@faker-js/faker";
 import { ConnectionDatabase } from "@infra/database/connection-database";
-import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf";
 import { DbRepositoryFactory } from "@infra/factories/repositories";
 import { FindAccountByCpfUsecase } from "@application/use-cases";
 import { ExistentCpfValidation } from "@application/validators";
 import { ExistsCpfException } from "@application/exceptions";
 import { HttpRequest } from "@infra/protocols";
 import { Account } from "@domain/entities";
+import { FindAccountByCpf } from "@domain/use-cases/account";
 
 let connection: ConnectionDatabase
 let repositoryFactory: DbRepositoryFactory

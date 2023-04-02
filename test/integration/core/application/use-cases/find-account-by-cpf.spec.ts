@@ -2,9 +2,9 @@ import { generate } from "cpf"
 import { faker } from "@faker-js/faker"
 import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
-import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf"
 import { FindAccountByCpfUsecase } from "@application/use-cases"
 import { Account } from "@domain/entities"
+import { FindAccountByCpf } from "@domain/use-cases/account"
 
 describe('FindAccountByCpf', () => {
     let connection: ConnectionDatabase

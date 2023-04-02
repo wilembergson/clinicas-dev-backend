@@ -9,9 +9,10 @@ export class Account {
     private phone: string
     private email: string
     private password: string
+    private addressId: string
 
-    constructor({ id, ...rest }: Account.Constructor) {
-        Object.assign(this, rest, { id: new ID(id) })
+    constructor({ id, addressId, ...rest }: Account.Constructor) {
+        Object.assign(this, rest, { id: new ID(id) }, this.addressId = null)
     }
 
     getState(): Account.State {
@@ -22,7 +23,8 @@ export class Account {
             birthdate: this.birthdate,
             phone: this.phone,
             email: this.email,
-            password: this.password
+            password: this.password,
+            addressId: this.addressId
         }
     }
 
@@ -32,7 +34,8 @@ export class Account {
             name: this.name,
             birthdate: this.birthdate,
             phone: this.phone,
-            email: this.email
+            email: this.email,
+            addressId: this.addressId
         }
     }
     getInformationsWithPassword(): Account.InformationsWithPassword {
@@ -42,7 +45,8 @@ export class Account {
             birthdate: this.birthdate,
             phone: this.phone,
             email: this.email,
-            password: this.password
+            password: this.password,
+            addressId: this.addressId
         }
     }
 }
@@ -56,6 +60,7 @@ export namespace Account {
         phone: string
         email: string
         password: string
+        addressId?: string
     }
     export type State = {
         id: string
@@ -65,6 +70,7 @@ export namespace Account {
         phone: string
         email: string
         password: string
+        addressId?: string
     }
     export type InformationsWithPassword = {
         cpf: string
@@ -73,6 +79,7 @@ export namespace Account {
         phone: string
         email: string
         password: string
+        addressId?: string
     }
     export type StateWithoutID = {
         cpf: string
@@ -80,5 +87,6 @@ export namespace Account {
         birthdate: string
         phone: string
         email: string
+        addressId?: string
     }
 }

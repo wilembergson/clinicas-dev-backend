@@ -5,10 +5,9 @@ import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
 import { LoginUsecase, SignupUsecase } from "@application/use-cases"
 import { Account } from "@domain/entities"
-import { Login } from "@domain/use-cases/login"
 import { Encrypter, HashComparer, Hasher } from "@application/protocols/cryptografy"
 import { JwtAdapter } from "@infra/cryptografy"
-import { Signup } from "@domain/use-cases/signup"
+import { Login, Signup } from "@domain/use-cases/signup-login"
 
 describe('Login', () => {
     let connection: ConnectionDatabase

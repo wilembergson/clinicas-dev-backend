@@ -1,6 +1,6 @@
 import { Controller, HttpRequest, HttpResponse, Validation } from "@infra/protocols";
 import { badRequest, logged, serverError } from "@infra/http/http-helper";
-import { Login } from "@domain/use-cases/login";
+import { Login } from "@domain/use-cases/signup-login";
 
 export class LoginController implements Controller {
     constructor(

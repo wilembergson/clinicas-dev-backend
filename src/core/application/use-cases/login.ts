@@ -1,7 +1,7 @@
 import { Encrypter, HashComparer } from "@application/protocols/cryptografy";
 import { AccountRepository } from "@domain/repositories";
 import { RepositoryFactory } from "@domain/factories";
-import { Login } from "@domain/use-cases/login";
+import { Login } from "@domain/use-cases/signup-login";
 
 export class LoginUsecase implements Login {
     private readonly accountRepository: AccountRepository

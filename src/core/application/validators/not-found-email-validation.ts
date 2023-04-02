@@ -1,5 +1,5 @@
 import { BaseException, NotFoundEmailException } from "@application/exceptions"
-import { FindAccountByEmail } from "@domain/use-cases/find-account-by-email"
+import { FindAccountByEmail } from "@domain/use-cases/account"
 import { HttpRequest, Validation } from "@infra/protocols"
 
 

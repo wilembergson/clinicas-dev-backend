@@ -11,13 +11,27 @@ datasource db {
 }
 
 model Account {
-  id String @id @db.Uuid()
-  cpf String @unique
-  name String
-  birthdate String
-  phone String
-  email String @unique
-  password String
- 
+  id                String              @id @db.Uuid()
+  cpf               String              @unique
+  name              String
+  birthdate         String
+  phone             String
+  email             String              @unique
+  password          String
+  addressId String?    @db.Uuid()
+  address   Address?   @relation(fields: [addressId], references: [id])
+
   @@map("accounts")
+}
+
+model Address {
+  id                String              @id @db.Uuid()
+  street            String
+  number            Int
+  district          String
+  city              String
+  uf                String
+  accounts Account[]
+
+  @@map("address")
 }

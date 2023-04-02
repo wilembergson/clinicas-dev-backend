@@ -5,8 +5,8 @@ import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
 import { Hasher } from "@application/protocols/cryptografy/hasher"
 import { SignupUsecase } from "@application/use-cases"
-import { Signup } from "@domain/use-cases/signup"
 import { Account } from "@domain/entities"
+import { Signup } from "@domain/use-cases/signup-login/signup"
 
 describe('Signup', () => {
     let connection: ConnectionDatabase

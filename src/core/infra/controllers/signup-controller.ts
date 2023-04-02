@@ -1,4 +1,4 @@
-import { Signup } from "@domain/use-cases/signup";
+import { Signup } from "@domain/use-cases/signup-login";
 import { badRequest, created, serverError } from "@infra/http/http-helper";
 import { Controller, HttpRequest, HttpResponse, Validation } from "@infra/protocols";
 

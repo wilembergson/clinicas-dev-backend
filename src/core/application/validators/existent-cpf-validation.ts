@@ -1,5 +1,5 @@
 import { BaseException, ExistsCpfException } from "@application/exceptions"
-import { FindAccountByCpf } from "@domain/use-cases/find-account-by-cpf"
+import { FindAccountByCpf } from "@domain/use-cases/account"
 import { HttpRequest, Validation } from "@infra/protocols"
 
 
