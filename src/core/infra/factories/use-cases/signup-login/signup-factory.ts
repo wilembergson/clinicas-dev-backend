@@ -1,6 +1,6 @@
 import { SignupUsecase } from "@application/use-cases"
-import { DbRepositoryFactory } from "../repositories"
 import { BcryptAdapter } from "@infra/cryptografy"
+import { DbRepositoryFactory } from "@infra/factories/repositories"
 
 export function signupFactory() {
     const repositoryFactory = new DbRepositoryFactory()

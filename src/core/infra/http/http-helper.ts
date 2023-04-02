@@ -18,10 +18,10 @@ export const ok = (data: any): HttpResponse => ({
   body: data
 })
 
-export const created = (): HttpResponse => ({
+export const created = (message: string): HttpResponse => ({
   statusCode: 201,
   body: {
-    message: "Account created."
+    message
   }
 })
 

@@ -1,8 +1,8 @@
 import { Account } from "@domain/entities"
 import { RepositoryFactory } from "@domain/factories"
+import { Signup } from "@domain/use-cases/signup-login"
 import { AccountRepository } from "@domain/repositories"
 import { Hasher } from "@application/protocols/cryptografy/hasher"
-import { Signup } from "@domain/use-cases/signup-login"
 
 export class SignupUsecase implements Signup {
     private readonly accountRepository: AccountRepository

@@ -1,19 +1,19 @@
-import { Signup } from "@domain/use-cases/signup-login";
+import { AddAddress } from "@domain/use-cases/address";
 import { badRequest, created, serverError } from "@infra/http/http-helper";
 import { Controller, HttpRequest, HttpResponse, Validation } from "@infra/protocols";
 
-export class SignupController implements Controller {
+export class AddAddressController implements Controller {
     constructor(
         private readonly validation: Validation,
-        private readonly signupUsecase: Signup
+        private readonly addAddressUsecase: AddAddress
     ) { }
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
             const error = await this.validation.validate(httpRequest)
             if(error) return badRequest(error)
-            await this.signupUsecase.execute(httpRequest.body)
-            return created("Account created.")
+            await this.addAddressUsecase.execute(httpRequest.body)
+            return created("Address saved.")
         } catch (error) {
             return serverError(error.statuscode)
         }

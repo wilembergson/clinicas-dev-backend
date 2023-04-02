@@ -13,7 +13,7 @@ export namespace AddAddress {
     }
     export type Output = {
         id: string
-        number: string
+        number: number
         street: string
         district: string
         city: string

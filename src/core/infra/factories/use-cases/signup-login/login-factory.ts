@@ -1,6 +1,6 @@
 import { LoginUsecase } from "@application/use-cases"
-import { DbRepositoryFactory } from "../repositories"
 import { BcryptAdapter, JwtAdapter } from "@infra/cryptografy"
+import { DbRepositoryFactory } from "@infra/factories/repositories"
 
 export function loginFactory() {
     const repositoryFactory = new DbRepositoryFactory()

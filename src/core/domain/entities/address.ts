@@ -23,6 +23,17 @@ export class Address {
             uf: this.uf
         }
     }
+
+    getStateString(): Address.StateString {
+        return {
+            id: this.id.value,
+            street: this.street,
+            number: this.number,
+            district: this.district,
+            city: this.city,
+            uf: this.uf
+        }
+    }
 }
 
 export namespace Address {
@@ -37,6 +48,14 @@ export namespace Address {
     export type State = {
         id: string
         number: number
+        street: string
+        district: string
+        city: string
+        uf: string
+    }
+    export type StateString = {
+        id: string
+        number: string
         street: string
         district: string
         city: string
