@@ -16,8 +16,8 @@ export class Address {
     getState(): Address.State {
         return {
             id: this.id.value,
-            number: this.number,
             street: this.street,
+            number: parseInt(this.number),
             district: this.district,
             city: this.city,
             uf: this.uf
@@ -36,7 +36,7 @@ export namespace Address {
     }
     export type State = {
         id: string
-        number: string
+        number: number
         street: string
         district: string
         city: string
