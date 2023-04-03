@@ -4,7 +4,7 @@ export interface Encrypter {
 
 export namespace Encrypter {
     export type Input = {
-        id: string
+        cpf: string
         name: string
     }
 }

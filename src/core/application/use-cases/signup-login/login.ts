@@ -19,7 +19,7 @@ export class LoginUsecase implements Login {
         const isValid = await this.hashComparer.compare(input.password, account.password)
         if (isValid) {
             const token = await this.encrypter.encrypt({
-                id: account.id,
+                cpf: account.cpf,
                 name: account.name
             })
             return token

@@ -1,5 +1,6 @@
 export * from './account/find-account-by-email'
 export * from './account/find-account-by-cpf'
+export * from './account/load-account-by-token'
 export * from './signup-login/signup'
 export * from './signup-login/login'
 export * from './address/add-address'
