@@ -6,6 +6,22 @@ export class AccountRepositoryDb implements AccountRepository {
     constructor(
         private readonly database: ConnectionDatabase
     ) { }
+    async update(data: Account): Promise<Account.State> {
+        const {name, birthdate, phone, email, password, addressId} = data.getState()
+        return await this.database.getConnection().account.update({
+            where: {
+                id: data.getState().id
+            },
+            data: {
+                name,
+                birthdate,
+                phone,
+                email,
+                password,
+                addressId
+            }
+        })
+    }
 
     async add(data: Account): Promise<Account.State> {
         return await this.database.getConnection().account.create({

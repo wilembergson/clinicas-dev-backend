@@ -15,12 +15,7 @@ export class LoadAccountByTokenUsecase implements LoadAccountByToken {
 
     async execute(accessToken: string): Promise<Account> {
         const payload = await this.decrypter.decrypt(accessToken)
-        if (payload) {
-            const account = await this.accountRepository.findByCpf(payload.cpf)
-            if (account) {
-                return new Account(account)
-            }
-        }
-        return null
+        const account = await this.accountRepository.findByCpf(payload.cpf)
+        return new Account(account)
     }
 }

@@ -22,7 +22,7 @@ export class SignupUsecase implements Signup {
             const hashedPassword = await this.hasher.hash(input.password)
             const account = new Account(Object.assign({}, input, { password: hashedPassword }))
             const result = await this.accountRepository.add(account)
-            const {id, password, ...accountInformations} = result
+            const {id, password, addressId, ...accountInformations} = result
             return accountInformations
         }
         return null

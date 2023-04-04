@@ -1,6 +1,6 @@
-import { AccessDeniedException } from "@application/exceptions"
 import { Decrypter } from "@application/protocols/cryptografy"
 import { LoadAccountByToken } from "@domain/use-cases/account"
+import { AccessDeniedException } from "@application/exceptions"
 import { badRequest, ok, serverError } from "@infra/http/http-helper"
 import { HttpRequest, HttpResponse, Middleware } from "@infra/protocols"
 

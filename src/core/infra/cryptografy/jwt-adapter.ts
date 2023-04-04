@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import { Decrypter, Encrypter } from "@application/protocols/cryptografy";
-import { badRequest } from "@infra/http/http-helper";
-import { AccessDeniedException } from "@application/exceptions";
+
 []
 export class JwtAdapter implements Encrypter, Decrypter {
     constructor(private readonly secret: string) { }
@@ -10,7 +9,7 @@ export class JwtAdapter implements Encrypter, Decrypter {
         return await jwt.sign(
             data,
             this.secret,
-            { expiresIn: '20s' }
+            { expiresIn: '5m' }
         )
     }
 

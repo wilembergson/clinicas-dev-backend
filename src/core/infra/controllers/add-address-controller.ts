@@ -9,10 +9,11 @@ export class AddAddressController implements Controller {
     ) { }
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+        const { body, sessionAccount} = httpRequest
         try {
             const error = await this.validation.validate(httpRequest)
             if(error) return badRequest(error)
-            await this.addAddressUsecase.execute(httpRequest.body)
+            await this.addAddressUsecase.execute(body, sessionAccount)
             return created("Address saved.")
         } catch (error) {
             return serverError(error.statuscode)

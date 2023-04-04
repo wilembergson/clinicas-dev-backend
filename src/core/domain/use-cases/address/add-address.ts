@@ -1,5 +1,7 @@
+import { Account } from "@domain/entities"
+
 export interface AddAddress {
-    execute(input: AddAddress.Input): Promise<AddAddress.Output>
+    execute(input: AddAddress.Input, sessionAccount: Account): Promise<AddAddress.Output>
 }
 
 export namespace AddAddress {
