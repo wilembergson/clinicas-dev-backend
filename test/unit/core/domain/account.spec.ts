@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker"
 import { generate } from 'cpf'
-import { Account } from "@domain/entities"
+import { Account, Address } from "@domain/entities"
 
 function makeAccount() {
     return new Account({
@@ -14,12 +14,28 @@ function makeAccount() {
     })
 }
 
-describe('Cpf', () => {
+function makeAddress(){
+    return new Address({
+        number: faker.address.buildingNumber(),
+        street: faker.address.street(),
+        district: faker.address.street(),
+        city: faker.address.city(),
+        uf: 'PB'
+    })
+}
+describe('Account', () => {
     it('should be possible create a instance', () => {
         const account = makeAccount()
         expect(() => account).not.toThrow()
     })
 
+    it('should update the address linked to the account', () => {
+        const account = makeAccount()
+        const address = makeAddress()
+        account.updateAddress(address)
+        expect(account.getState().addressId).not.toBeNull()
+        expect(account.getAddress()).toEqual(address)
+    })
     it('should be able to get state.', () => {
         const account = makeAccount()
         expect(account.getInformations()).toHaveProperty('cpf')
