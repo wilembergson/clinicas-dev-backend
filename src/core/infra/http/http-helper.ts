@@ -1,4 +1,4 @@
-import { BaseException, ServerError } from "@application/exceptions"
+import { BaseException, ServerException } from "@application/exceptions"
 import { HttpResponse } from "@infra/protocols"
 
 export function badRequest(error: BaseException): HttpResponse {
@@ -10,7 +10,7 @@ export function badRequest(error: BaseException): HttpResponse {
 
 export const serverError = (error: Error): HttpResponse => ({
   statusCode: 500,
-  body: new ServerError(error.stack)
+  body: new ServerException(error.stack)
 })
 
 export const ok = (data: any): HttpResponse => ({

@@ -1,6 +1,6 @@
 import { Decrypter } from "@application/protocols/cryptografy"
 import { LoadAccountByToken } from "@domain/use-cases/account"
-import { AccessDeniedException } from "@application/exceptions"
+import { AccessDeniedException, ExpiredTokenException } from "@application/exceptions"
 import { badRequest, ok, serverError } from "@infra/http/http-helper"
 import { HttpRequest, HttpResponse, Middleware } from "@infra/protocols"
 
@@ -19,8 +19,7 @@ export class AuthMiddleware implements Middleware {
             const account = await this.loadAccountByToken.execute(accessToken)
             return ok(account)
         } catch (error) {
-            console.log(error)
-            if (error.name === 'TokenExpiredError') return badRequest(new AccessDeniedException())
+            if (error.name === 'TokenExpiredError') return badRequest(new ExpiredTokenException(error))
             return serverError(error)
         }
     }
