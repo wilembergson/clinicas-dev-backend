@@ -1,12 +1,12 @@
 import { generate } from "cpf"
 import { faker } from "@faker-js/faker"
-import { ConnectionDatabase } from "@infra/database/connection-database"
-import { DbRepositoryFactory } from "@infra/factories/repositories"
-import { FindAccountByCpfUsecase, LoadAccountByTokenUsecase } from "@application/use-cases"
 import { Account } from "@domain/entities"
-import { FindAccountByCpf, LoadAccountByToken } from "@domain/use-cases/account"
-import { Decrypter, Encrypter } from "@application/protocols/cryptografy"
 import { JwtAdapter } from "@infra/cryptografy"
+import { LoadAccountByToken } from "@domain/use-cases/account"
+import { LoadAccountByTokenUsecase } from "@application/use-cases"
+import { DbRepositoryFactory } from "@infra/factories/repositories"
+import { ConnectionDatabase } from "@infra/database/connection-database"
+import { Decrypter, Encrypter } from "@application/protocols/cryptografy"
 
 describe('LoadAccountByToken', () => {
     let connection: ConnectionDatabase
@@ -37,8 +37,8 @@ describe('LoadAccountByToken', () => {
             email: faker.internet.email(),
             password: faker.internet.password()
         })
-
     }
+    
     async function generateToken(account: Account){
         return await encrypter.encrypt({
             cpf: account.getInformations().cpf,
