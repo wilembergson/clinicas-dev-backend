@@ -9,7 +9,7 @@ export class JwtAdapter implements Encrypter, Decrypter {
         return await jwt.sign(
             data,
             this.secret,
-            { expiresIn: '5m' }
+            { expiresIn: '60m' }
         )
     }
 

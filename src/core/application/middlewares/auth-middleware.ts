@@ -20,6 +20,7 @@ export class AuthMiddleware implements Middleware {
             return ok(account)
         } catch (error) {
             if (error.name === 'TokenExpiredError') return badRequest(new ExpiredTokenException(error))
+            if (error.name === 'JsonWebTokenError') return badRequest(new AccessDeniedException())
             return serverError(error)
         }
     }

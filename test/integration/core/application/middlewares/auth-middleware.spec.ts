@@ -1,17 +1,16 @@
 import { generate } from "cpf";
+import jwt from "jsonwebtoken";
 import { faker } from "@faker-js/faker";
-import jwt from 'jsonwebtoken'
-import { ConnectionDatabase } from "@infra/database/connection-database";
-import { DbRepositoryFactory } from "@infra/factories/repositories";
-import { AccessDeniedException, AlreadAddressRegistredException, ExpiredTokenException, ServerException } from "@application/exceptions";
 import { HttpRequest } from "@infra/protocols";
+import { JwtAdapter } from "@infra/cryptografy";
 import { Account, Address } from "@domain/entities";
-import { AddressRegistredValidation } from "@application/validators/address-registred-validation";
 import { AuthMiddleware } from "@application/middlewares";
 import { LoadAccountByToken } from "@domain/use-cases/account";
 import { LoadAccountByTokenUsecase } from "@application/use-cases";
+import { DbRepositoryFactory } from "@infra/factories/repositories";
+import { ConnectionDatabase } from "@infra/database/connection-database";
 import { Decrypter, Encrypter } from "@application/protocols/cryptografy";
-import { JwtAdapter } from "@infra/cryptografy";
+import { AccessDeniedException, ExpiredTokenException, ServerException } from "@application/exceptions";
 
 let connection: ConnectionDatabase
 let repositoryFactory: DbRepositoryFactory
@@ -75,7 +74,7 @@ describe('AuthMiddleware', () => {
 
     it('should throw for null token', async () => {
         const response = await sut.handle(makeRequest(null))
-        expect(response.statusCode).toEqual(403)
+        expect(response.statusCode).toEqual(401)
         expect(response.body).toEqual(new AccessDeniedException())
     })
 
@@ -85,7 +84,14 @@ describe('AuthMiddleware', () => {
         expect(response.statusCode).toEqual(401)
         expect(response.body).toEqual(new ExpiredTokenException(response.body))
     })
-    it('should throw when token expire', async () => {
+
+    it('should throw to wrong token format', async () => {
+        const response = await sut.handle(makeRequest(faker.datatype.string()))
+        expect(response.statusCode).toEqual(401)
+        expect(response.body).toEqual(new AccessDeniedException())
+    })
+
+    it('should throw server error', async () => {
         const token = generateExpiredToken()
         const response = await sut.handle(null)
         expect(response.statusCode).toEqual(500)
