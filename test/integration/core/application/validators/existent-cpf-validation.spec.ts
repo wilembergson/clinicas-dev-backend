@@ -9,58 +9,57 @@ import { HttpRequest } from "@infra/protocols";
 import { Account } from "@domain/entities";
 import { FindAccountByCpf } from "@domain/use-cases/account";
 
-let connection: ConnectionDatabase
-let repositoryFactory: DbRepositoryFactory
-let findAccountByCpfUsecase: FindAccountByCpf
-let sut: ExistentCpfValidation
+describe('Existent account validation', () => {
+    let connection: ConnectionDatabase
+    let repositoryFactory: DbRepositoryFactory
+    let findAccountByCpfUsecase: FindAccountByCpf
+    let sut: ExistentCpfValidation
 
-beforeAll(() => {
-    connection = new ConnectionDatabase()
-    repositoryFactory = new DbRepositoryFactory()
-    findAccountByCpfUsecase = new FindAccountByCpfUsecase(repositoryFactory)
-    sut = new ExistentCpfValidation(findAccountByCpfUsecase)
-})
-afterEach(async () => {
-    await connection.clearStorage('account')
-})
-afterAll(async () => {
-    await connection.clearStorage('account')
-    connection.close()
-})
-
-function generateCpf(): string {
-    return generate().replace(/[-.]/g, "")
-}
-
-function addNewAccount(cpf: string): Account.State {
-    const account = new Account({
-        id: faker.datatype.uuid(),
-        cpf,
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email: faker.internet.email(),
-        password: faker.internet.password()
+    beforeAll(() => {
+        connection = new ConnectionDatabase()
+        repositoryFactory = new DbRepositoryFactory()
+        findAccountByCpfUsecase = new FindAccountByCpfUsecase(repositoryFactory)
+        sut = new ExistentCpfValidation(findAccountByCpfUsecase)
     })
-    return account.getState()
-}
+    afterEach(async () => {
+        await connection.clearStorage('account')
+    })
+    afterAll(async () => {
+        await connection.clearStorage('account')
+        connection.close()
+    })
 
-function makeRequestWithBodyData(cpf: string): HttpRequest {
-    return {
-        body: addNewAccount(cpf)
+    function generateCpf(): string {
+        return generate().replace(/[-.]/g, "")
     }
-}
 
-function makeRequestWithParamsData(cpf: string): HttpRequest {
-    return {
-        body: {},
-        params: {
-            cpf
+    function addNewAccount(cpf: string): Account.State {
+        const account = new Account({
+            id: faker.datatype.uuid(),
+            cpf,
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email: faker.internet.email(),
+            password: faker.internet.password()
+        })
+        return account.getState()
+    }
+
+    function makeRequestWithBodyData(cpf: string): HttpRequest {
+        return {
+            body: addNewAccount(cpf)
         }
     }
-}
 
-describe('Existent account validation', () => {
+    function makeRequestWithParamsData(cpf: string): HttpRequest {
+        return {
+            body: {},
+            params: {
+                cpf
+            }
+        }
+    }
     it('should find a registred account passing data body', async () => {
         const cpf = generateCpf()
         await connection.getConnection().account.create({

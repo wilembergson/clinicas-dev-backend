@@ -4,27 +4,26 @@ import { faker } from "@faker-js/faker";
 import { ExpressApp } from "@infra/config";
 import { ConnectionDatabase } from "@infra/database/connection-database";
 
-
-async function makeRequest(): Promise<any> {
-    return {
-        cpf: generate().replace(/[-.]/g, ""),
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email: faker.internet.email(),
-        password: faker.internet.password()
-    }
-}
-async function makeInvalidRequest(): Promise<any> {
-    return {
-        cpf: faker.datatype.string(11)
-    }
-}
-
 describe('POST /signup', () => {
     const app = supertest(new ExpressApp().getInstance)
     const connection = new ConnectionDatabase()
 
+    async function makeRequest(): Promise<any> {
+        return {
+            cpf: generate().replace(/[-.]/g, ""),
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email: faker.internet.email(),
+            password: faker.internet.password()
+        }
+    }
+    async function makeInvalidRequest(): Promise<any> {
+        return {
+            cpf: faker.datatype.string(11)
+        }
+    }
+    
     afterEach(async () => {
         await connection.clearStorage('account')
     })

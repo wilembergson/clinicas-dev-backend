@@ -10,53 +10,52 @@ import { Account, Address } from "@domain/entities";
 import { FindAccountByEmail } from "@domain/use-cases/account";
 import { AddressRegistredValidation } from "@application/validators/address-registred-validation";
 
-let connection: ConnectionDatabase
-let repositoryFactory: DbRepositoryFactory
-let sut: AddressRegistredValidation
-
-beforeAll(() => {
-    connection = new ConnectionDatabase()
-    repositoryFactory = new DbRepositoryFactory()
-    sut = new AddressRegistredValidation()
-})
-afterEach(async () => {
-    await connection.clearStorage('account')
-})
-afterAll(async () => {
-    await connection.clearStorage('account')
-    connection.close()
-})
-
-function makeAccount(): Account {
-    const account = new Account({
-        id: faker.datatype.uuid(),
-        cpf: generate().replace(/[-.]/g, ""),
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email: faker.internet.email(),
-        password: faker.internet.password()
-    })
-    return account
-}
-function makeAddress(){
-    return new Address({
-        number: faker.address.buildingNumber(),
-        street: faker.address.street(),
-        district: faker.address.street(),
-        city: faker.address.city(),
-        uf: 'PB'
-    })
-}
-
-function makeRequestWithSessionAccount(account: Account): HttpRequest {
-    return {
-        body: {},
-        sessionAccount: account
-    }
-}
-
 describe('Address alread registred validation', () => {
+    let connection: ConnectionDatabase
+    let repositoryFactory: DbRepositoryFactory
+    let sut: AddressRegistredValidation
+
+    beforeAll(() => {
+        connection = new ConnectionDatabase()
+        repositoryFactory = new DbRepositoryFactory()
+        sut = new AddressRegistredValidation()
+    })
+    afterEach(async () => {
+        await connection.clearStorage('account')
+    })
+    afterAll(async () => {
+        await connection.clearStorage('account')
+        connection.close()
+    })
+
+    function makeAccount(): Account {
+        const account = new Account({
+            id: faker.datatype.uuid(),
+            cpf: generate().replace(/[-.]/g, ""),
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email: faker.internet.email(),
+            password: faker.internet.password()
+        })
+        return account
+    }
+    function makeAddress() {
+        return new Address({
+            number: faker.address.buildingNumber(),
+            street: faker.address.street(),
+            district: faker.address.street(),
+            city: faker.address.city(),
+            uf: 'PB'
+        })
+    }
+
+    function makeRequestWithSessionAccount(account: Account): HttpRequest {
+        return {
+            body: {},
+            sessionAccount: account
+        }
+    }
     it('should not throw with an account without a linked address', async () => {
         const account = makeAccount()
         await repositoryFactory.accountRepository().add(account)

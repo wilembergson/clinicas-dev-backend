@@ -2,28 +2,28 @@ import { faker } from "@faker-js/faker"
 import { generate } from 'cpf'
 import { Account, Address } from "@domain/entities"
 
-function makeAccount() {
-    return new Account({
-        id: faker.datatype.uuid(),
-        cpf: generate().replace(/[-.]/g, ""),
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email: faker.internet.email(),
-        password: faker.internet.password()
-    })
-}
-
-function makeAddress(){
-    return new Address({
-        number: faker.address.buildingNumber(),
-        street: faker.address.street(),
-        district: faker.address.street(),
-        city: faker.address.city(),
-        uf: 'PB'
-    })
-}
 describe('Account', () => {
+    function makeAccount() {
+        return new Account({
+            id: faker.datatype.uuid(),
+            cpf: generate().replace(/[-.]/g, ""),
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email: faker.internet.email(),
+            password: faker.internet.password()
+        })
+    }
+    function makeAddress() {
+        return new Address({
+            number: faker.address.buildingNumber(),
+            street: faker.address.street(),
+            district: faker.address.street(),
+            city: faker.address.city(),
+            uf: 'PB'
+        })
+    }
+    
     it('should be possible create a instance', () => {
         const account = makeAccount()
         expect(() => account).not.toThrow()

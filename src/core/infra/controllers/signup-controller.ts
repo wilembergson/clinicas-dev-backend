@@ -15,7 +15,7 @@ export class SignupController implements Controller {
             await this.signupUsecase.execute(httpRequest.body)
             return created("Account created.")
         } catch (error) {
-            return serverError(error.statuscode)
+            return serverError(error)
         }
     }
 

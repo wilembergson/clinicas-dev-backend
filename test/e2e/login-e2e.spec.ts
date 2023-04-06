@@ -6,39 +6,40 @@ import { ExpressApp } from "@infra/config";
 import { ConnectionDatabase } from "@infra/database/connection-database";
 import { Account } from "@domain/entities";
 
-type LoginType = {
-    email: string,
-    password: string
-}
-
-async function makeLogin(): Promise<LoginType>{
-    return {
-        email: faker.internet.email(),
-        password: faker.internet.password()
-    }
-}
-
-async function makeAccount(email: string, password: string): Promise<Account> {
-    const hashedPassword = await hash(password, 10)
-    return new Account({
-        cpf: generate().replace(/[-.]/g, ""),
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email,
-        password: hashedPassword
-    })
-}
-
-async function makeInvalidRequest(): Promise<any> {
-    return {
-        cpf: faker.datatype.string(11)
-    }
-}
 
 describe('GET /login', () => {
     const app = supertest(new ExpressApp().getInstance)
     const connection = new ConnectionDatabase()
+
+    type LoginType = {
+        email: string,
+        password: string
+    }
+    
+    async function makeLogin(): Promise<LoginType>{
+        return {
+            email: faker.internet.email(),
+            password: faker.internet.password()
+        }
+    }
+    
+    async function makeAccount(email: string, password: string): Promise<Account> {
+        const hashedPassword = await hash(password, 10)
+        return new Account({
+            cpf: generate().replace(/[-.]/g, ""),
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email,
+            password: hashedPassword
+        })
+    }
+    
+    async function makeInvalidRequest(): Promise<any> {
+        return {
+            cpf: faker.datatype.string(11)
+        }
+    }
 
     afterEach(async () => {
         await connection.clearStorage('account')

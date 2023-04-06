@@ -10,63 +10,62 @@ import { BcryptAdapter } from "@infra/cryptografy";
 import { HttpRequest } from "@infra/protocols";
 import { Account } from "@domain/entities";
 
-let connection: ConnectionDatabase
-let repositoryFactory: DbRepositoryFactory
-let hashComparer: HashComparer
-let sut: PasswordValidation
-const signin = signupFactory()
+describe('Password validation', () => {
+    let connection: ConnectionDatabase
+    let repositoryFactory: DbRepositoryFactory
+    let hashComparer: HashComparer
+    let sut: PasswordValidation
+    const signin = signupFactory()
 
-type loginType = {
-    email:string,
-    password:string
-}
-
-beforeAll(() => {
-    connection = new ConnectionDatabase()
-    repositoryFactory = new DbRepositoryFactory()
-    hashComparer = new BcryptAdapter(10)
-    sut = new PasswordValidation(hashComparer, repositoryFactory)
-})
-afterEach(async () => {
-    await connection.clearStorage('account')
-})
-afterAll(async () => {
-    await connection.clearStorage('account')
-    connection.close()
-})
-
-function generateLogin(): loginType {
-    return {
-        email: faker.internet.email(),
-        password: faker.internet.password()
+    type loginType = {
+        email: string,
+        password: string
     }
-}
 
-function addNewAccount(email: string, password: string): Account {
-    const account = new Account({
-        id: faker.datatype.uuid(),
-        cpf: generate().replace(/[-.]/g, ""),
-        name: faker.name.firstName(),
-        birthdate: new Date('1995-01-08').toString(),
-        phone: '83976884321',
-        email,
-        password
+    beforeAll(() => {
+        connection = new ConnectionDatabase()
+        repositoryFactory = new DbRepositoryFactory()
+        hashComparer = new BcryptAdapter(10)
+        sut = new PasswordValidation(hashComparer, repositoryFactory)
     })
-    return account
-}
+    afterEach(async () => {
+        await connection.clearStorage('account')
+    })
+    afterAll(async () => {
+        await connection.clearStorage('account')
+        connection.close()
+    })
 
-function makeRequest(email: string, password: string): HttpRequest {
-    return {
-        body: {
-            email,
-            password
+    function generateLogin(): loginType {
+        return {
+            email: faker.internet.email(),
+            password: faker.internet.password()
         }
     }
-}
 
-describe('Password validation', () => {
+    function addNewAccount(email: string, password: string): Account {
+        const account = new Account({
+            id: faker.datatype.uuid(),
+            cpf: generate().replace(/[-.]/g, ""),
+            name: faker.name.firstName(),
+            birthdate: new Date('1995-01-08').toString(),
+            phone: '83976884321',
+            email,
+            password
+        })
+        return account
+    }
+
+    function makeRequest(email: string, password: string): HttpRequest {
+        return {
+            body: {
+                email,
+                password
+            }
+        }
+    }
     it('password should be ok', async () => {
-        const  login = generateLogin()
+        const login = generateLogin()
         const acc = addNewAccount(login.email, login.password)
         await signin.execute(acc.getInformationsWithPassword())
         const error = await sut.validate(makeRequest(login.email, login.password))
@@ -74,7 +73,7 @@ describe('Password validation', () => {
     })
 
     it('should throw trying match an unregistred password', async () => {
-        const  login = generateLogin()
+        const login = generateLogin()
         const acc = addNewAccount(login.email, login.password)
         await signin.execute(acc.getInformationsWithPassword())
         const error = await sut.validate(makeRequest(login.email, faker.internet.password()))

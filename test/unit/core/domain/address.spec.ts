@@ -1,16 +1,16 @@
 import { faker } from "@faker-js/faker"
 import { Address } from "@domain/entities"
 
-function makeAddress(){
-    return new Address({
-        number: faker.address.buildingNumber(),
-        street: faker.address.street(),
-        district: faker.address.street(),
-        city: faker.address.city(),
-        uf: 'PB'
-    })
-}
 describe('Address', () => {
+    function makeAddress() {
+        return new Address({
+            number: faker.address.buildingNumber(),
+            street: faker.address.street(),
+            district: faker.address.street(),
+            city: faker.address.city(),
+            uf: 'PB'
+        })
+    }
     it('should be possible create a instance', () => {
         const address = makeAddress()
         expect(() => address).not.toThrow()
