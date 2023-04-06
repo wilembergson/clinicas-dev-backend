@@ -62,7 +62,7 @@ $ npm run dev
 }
 ``` 
 </br></br>
-- - -
+
 
 - Login
 </br> 
@@ -80,5 +80,22 @@ $ npm run dev
 {
 	"token": <jwt-token>
 }
+``` 
+</br></br>
+
+- New address</br> 
+(POST): **/address**
+```bash
+# body
+{
+  "number":"777",
+  "street":"Rua tal",
+  "district":"Sapucaia",
+  "city": "Timbaúba",
+  "uf":"PE"
+}
+
+# headers
+"Authorization": <jwt-token>
 ``` 
 </br></br>
