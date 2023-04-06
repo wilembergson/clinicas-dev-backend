@@ -15,7 +15,7 @@ export class LoginController implements Controller {
             const token = await this.loginUsecase.execute(httpRequest.body)
             return logged(token)
         } catch (error) {
-            return serverError(error.statuscode)
+            return serverError(error)
         }
     }
 
