@@ -1,24 +1,21 @@
-import { Account, Address } from "@domain/entities";
+import { Address } from "@domain/entities";
 import { RepositoryFactory } from "@domain/factories";
-import { AccountRepository, AddressRepository } from "@domain/repositories";
-import { AddAddress, UpdateAddress } from "@domain/use-cases/address";
+import { AddressRepository } from "@domain/repositories";
+import { UpdateAddress } from "@domain/use-cases/address";
 
 export class UpdateAddressUsecase implements UpdateAddress {
     private readonly addressRepository: AddressRepository
-    //private readonly accountRepository: AccountRepository
 
     constructor(
         repositoryFactory: RepositoryFactory
     ) {
         this.addressRepository = repositoryFactory.addressRepository()
-        //this.accountRepository = repositoryFactory.accountRepository()
     }
-    async execute(input: AddAddress.Input): Promise<UpdateAddress.Output> {
-        const address = new Address(input)
-        return await this.addressRepository.update(address)
+    async execute(input: UpdateAddress.Input): Promise<UpdateAddress.Output> {
+        const foundAddress = await this.addressRepository.getById(input.id)
+        const address = new Address(foundAddress)
+        address.update(input)
+        return await this.addressRepository.save(address)
         
     }
-
-   
-
 }

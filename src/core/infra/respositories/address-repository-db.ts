@@ -7,18 +7,20 @@ export class AddressRepositoryDb implements AddressRepository {
         private readonly database: ConnectionDatabase
     ) { }
     
-    async add(data: Address): Promise<Address.State> {
-        return await this.database.getConnection().address.create({
-            data: data.getState()
+    async save(data: Address): Promise<Address.State> {
+        const { id, number, street, district, city, uf } = data.getState()
+        return await this.database.getConnection().address.upsert({
+            where: { id },
+            create: data.getState(),
+            update: { number, street, district, city, uf }
         })
     }
-    
-    async update(data: Address): Promise<Address.State> {
-        return await this.database.getConnection().address.update({
-            where:{
-                id: data.getState().id
-            },
-            data: data.getState()
+
+    async getById(id: string): Promise<Address.State> {
+        return await this.database.getConnection().address.findFirst({
+            where: {
+                id
+            }
         })
     }
 }

@@ -1,23 +1,23 @@
 import { generate } from "cpf"
 import { faker } from "@faker-js/faker"
-import { BcryptAdapter } from "@infra/cryptografy/bcrypt-adapter"
 import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
-import { Hasher } from "@application/protocols/cryptografy/hasher"
-import { AddAddressUsecase, SignupUsecase } from "@application/use-cases"
 import { Account, Address } from "@domain/entities"
-import { Signup } from "@domain/use-cases/signup-login/signup"
-import { AddAddress } from "@domain/use-cases/address"
+import { AddAddress, UpdateAddress } from "@domain/use-cases/address"
+import { UpdateAddressUsecase } from "@application/use-cases/address/update-address"
+import { AddAddressUsecase } from "@application/use-cases"
 
-describe('AddAddress', () => {
+describe('UpdateAddress', () => {
     let connection: ConnectionDatabase
     let repositoryFactory: DbRepositoryFactory
-    let sut: AddAddress
+    let addAddress: AddAddress
+    let sut: UpdateAddress
 
     beforeAll(() => {
         connection = new ConnectionDatabase()
         repositoryFactory = new DbRepositoryFactory()
-        sut = new AddAddressUsecase(repositoryFactory)
+        addAddress = new AddAddressUsecase(repositoryFactory)
+        sut = new UpdateAddressUsecase(repositoryFactory)
     })
 
     afterAll(async () => {
@@ -37,8 +37,10 @@ describe('AddAddress', () => {
         })
     }
 
-    function makeAddress(){
+    function makeAddress(id?: string){
+        const _id = (id ? id : faker.datatype.uuid())
         return new Address({
+            id: _id,
             number: faker.address.buildingNumber(),
             street: faker.address.street(),
             district: faker.address.street(),
@@ -47,12 +49,15 @@ describe('AddAddress', () => {
         })
     }
 
-    it('should create a new address', async () => {
+    it('should update an address', async () => {
         const account = makeAccount()
-        const address = makeAddress()
         await repositoryFactory.accountRepository().add(account)
-        const response = await sut.execute(address.getStateString(), account)
-        expect(response).toStrictEqual(address.getState())
+        const address = makeAddress()
+        await addAddress.execute(address.getStateString(), account)
+        const updatedAddress = makeAddress(address.getState().id)
+        const response = await sut.execute(updatedAddress.getStateString())
+        expect(() => response).not.toThrow()
+        expect(response).toStrictEqual(updatedAddress.getState())
     })
 
 })

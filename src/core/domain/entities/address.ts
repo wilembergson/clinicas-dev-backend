@@ -34,12 +34,19 @@ export class Address {
             uf: this.uf
         }
     }
+    update(input: Partial<Address.StateString>): void {
+        Object.keys(input).forEach((key) => {
+          if (input[key] !== undefined && key !== 'id') {
+            this[key] = input[key];
+          }
+        });
+      }
 }
 
 export namespace Address {
     export type Constructor = {
         id?: string
-        number: string
+        number: string | number
         street: string
         district: string
         city: string

@@ -11,16 +11,16 @@ export class AddAddressUsecase implements AddAddress {
         repositoryFactory: RepositoryFactory
     ) {
         this.addressRepository = repositoryFactory.addressRepository(),
-        this.accountRepository = repositoryFactory.accountRepository()
+            this.accountRepository = repositoryFactory.accountRepository()
     }
     async execute(input: AddAddress.Input, sessionAccount: Account): Promise<AddAddress.Output> {
         const newAddress = new Address(input)
-        const address = await this.addressRepository.add(newAddress)
+        const address = await this.addressRepository.save(newAddress)
         sessionAccount.updateAddress(newAddress)
         await this.accountRepository.update(sessionAccount)
         return address
     }
 
-   
+
 
 }
