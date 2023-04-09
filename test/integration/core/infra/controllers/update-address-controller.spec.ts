@@ -1,16 +1,12 @@
 import { generate } from "cpf";
-import jwt from "jsonwebtoken";
 import { faker } from "@faker-js/faker";
 import { Account } from "@domain/entities";
 import { HttpRequest } from "@infra/protocols";
-import { JwtAdapter } from "@infra/cryptografy";
-import { AddAddressController, UpdateAddressController } from "@infra/controllers";
 import { AddAddressUsecase } from "@application/use-cases";
 import { MissingParamError } from "@application/exceptions";
-import { Encrypter } from "@application/protocols/cryptografy";
+import { UpdateAddressController } from "@infra/controllers";
 import { DbRepositoryFactory } from "@infra/factories/repositories";
 import { ConnectionDatabase } from "@infra/database/connection-database";
-import { addAddressValidationFactory } from "@infra/factories/validators/add-address-validation-factory";
 import { UpdateAddressUsecase } from "@application/use-cases/address/update-address";
 import { updateAddressValidationFactory } from "@infra/factories/validators/update-address-validation-factory";
 
