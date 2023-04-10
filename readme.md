@@ -26,6 +26,10 @@ $ npm install
 ```
 </br>
 
+### Variáveis de ambiente
+- Crie um arquivo .env na raíz do projeto e preencha de acordo com o arquivo .env-exemple que já se encontra no mesmo diretório.
+</br></br></br>
+
 ### Subir container
 ```bash
 # Irá executar o projeto no ambiente Docker
@@ -96,6 +100,42 @@ $ npm run dev
 }
 
 # headers
-"Authorization": <jwt-token>
+"authorization": <jwt-token>
+``` 
+</br></br>
+
+- Get address</br> 
+(GET): **/address**
+```bash
+# headers
+"authorization": <jwt-token>
+
+# response
+{
+  "id":"c89b1d73-9356-4661-9112-e6ddb646b1e2",
+  "number":"777",
+  "street":"Rua tal",
+  "district":"Sapucaia",
+  "city": "Timbaúba",
+  "uf":"PE"
+}
+``` 
+</br></br>
+
+- Update address</br> 
+(PUT): **/address**
+```bash
+# body
+{
+  "id":"c89b1d73-9356-4661-9112-e6ddb646b1e2",
+  "number":"777",
+  "street":"Rua tal",
+  "district":"Sapucaia",
+  "city": "Timbaúba",
+  "uf":"PE"
+}
+
+# headers
+"authorization": <jwt-token>
 ``` 
 </br></br>
