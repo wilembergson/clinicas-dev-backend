@@ -1,10 +1,10 @@
 import { Validation } from "@infra/protocols";
 import { addressSchema } from "@application/schemas";
 import {
+    AddressRegistredValidation,
     RequiredFieldValidation,
     ValidationComposite
 } from "@application/validators";
-import { AddressRegistredValidation } from "@application/validators/address-registred-validation";
 
 export function addAddressValidationFactory(): ValidationComposite {
     const validations: Validation[] = []

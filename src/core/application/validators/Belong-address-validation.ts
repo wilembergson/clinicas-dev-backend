@@ -6,8 +6,8 @@ export class BelongAddressValidation implements Validation {
     ) { }
 
     async validate(input: HttpRequest): Promise<BaseException> {
-        const address = input.body
+        const addressId = input.body.id
         const account = input.sessionAccount.getState()
-        if (address.id !== account.addressId) return new NotBelongAddressException()
+        if (addressId !== account.addressId) return new NotBelongAddressException()
     }
 }

@@ -7,10 +7,8 @@ export function adaptMiddleware(middleware: Middleware) {
       headers: req.headers
     }
     const httpResponse = await middleware.handle(httpRequest)
-    //console.log(httpResponse.body)
     if (httpResponse.statusCode === 200) {
       Object.assign(res.locals, { sessionAccount: httpResponse.body })
-      //res.locals.user = httpResponse.body
       next()
     } else {
       res.status(httpResponse.statusCode).json({
