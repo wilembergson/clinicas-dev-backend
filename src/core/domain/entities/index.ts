@@ -1,3 +1,6 @@
 export * from './id'
 export * from './account'
 export * from './address'
+export * from './specialty'
+export * from './day'
+export * from './consult'

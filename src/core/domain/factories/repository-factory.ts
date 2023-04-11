@@ -1,6 +1,11 @@
-import { AccountRepository, AddressRepository } from "@domain/repositories";
+import {
+    AccountRepository,
+    AddressRepository,
+    SpecialtyRepository
+} from "@domain/repositories";
 
-export interface RepositoryFactory{
+export interface RepositoryFactory {
     accountRepository(): AccountRepository
     addressRepository(): AddressRepository
+    specialtyRepository(): SpecialtyRepository
 }
