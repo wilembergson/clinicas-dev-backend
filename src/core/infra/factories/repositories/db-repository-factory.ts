@@ -3,7 +3,8 @@ import { ConnectionDatabase } from "@infra/database/connection-database"
 import { AccountRepositoryDb } from "@infra/respositories/account-respository-db"
 import { AddressRepositoryDb } from "@infra/respositories/address-repository-db"
 import { SpecialtyRepositoryDb } from "@infra/respositories/specialty-respository-db"
-import { AccountRepository, AddressRepository, SpecialtyRepository } from "@domain/repositories"
+import { AccountRepository, AddressRepository, ConsultRepository, SpecialtyRepository } from "@domain/repositories"
+import { ConsultRepositoryDb } from "@infra/respositories/consult-respository"
 
 export class DbRepositoryFactory implements RepositoryFactory{
     private connection: ConnectionDatabase
@@ -22,5 +23,9 @@ export class DbRepositoryFactory implements RepositoryFactory{
     
     specialtyRepository(): SpecialtyRepository {
         return new SpecialtyRepositoryDb(this.connection)
+    }
+
+    consultRepository(): ConsultRepository {
+        return new ConsultRepositoryDb(this.connection)
     }
 }

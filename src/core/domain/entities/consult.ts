@@ -33,7 +33,7 @@ export class Consult {
 export namespace Consult {
     export type Constructor = {
         id?: string
-        name: string
+        date: string
     }
     export type State = {
         id: string
