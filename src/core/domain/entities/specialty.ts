@@ -13,12 +13,17 @@ export class Specialty {
     addDays(days: Day[]){
         this.days = days
     }
+
     getState(): Specialty.State{
         return {
             id: this.id.value,
             name: this.name,
             days: this.days
         }
+    }
+
+    getAvailableDays(): number[]{
+        return this.days.map(item => item.getDayNumber())
     }
 }
 

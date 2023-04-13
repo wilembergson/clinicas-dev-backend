@@ -28,6 +28,7 @@ export class Consult {
     addAccount(account: Account) {
         this.account = account
     }
+
 }
 
 export namespace Consult {

@@ -14,6 +14,34 @@ export class Day {
             name: this.name
         }
     }
+
+    getDayNumber(): number {
+        switch (this.name) {
+            case 'DOMINGO':
+                return 0
+                break
+            case 'SEGUNDA':
+                return 1
+                break
+            case 'TERÇA':
+                return 2
+                break
+            case 'QUARTA':
+                return 3
+                break
+            case 'QUINTA':
+                return 4
+                break
+            case 'SEXTA':
+                return 5
+                break
+            case 'SÁBADO':
+                return 6
+                break
+            default:
+                break
+        }
+    }
 }
 
 export namespace Day {
