@@ -1,0 +1,1 @@
+export * from './get-specialty-by-name'
