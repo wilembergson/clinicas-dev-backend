@@ -1,7 +1,6 @@
 import { BaseException, NotBelongSpecialtyDayException } from "@application/exceptions"
 import { FindSpecialtyByName } from "@domain/use-cases/specialty"
 import { HttpRequest, Validation } from "@infra/protocols"
-import moment from "moment-timezone"
 
 export class SpecialtyDaysValidation implements Validation {
     constructor(

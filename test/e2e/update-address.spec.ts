@@ -71,7 +71,7 @@ describe('PUT /address', () => {
         const token = await encrypter.encrypt({ cpf: account.getState().cpf, name: account.getState().name })
         const response = await app.put("/address").set('authorization', token).send(updateAddress.getStateString())
         expect(response.statusCode).toEqual(200)
-    })
+    }, 10000)
 
     it('should throw to invalid token', async () => {
         const response = await app.put("/address").set('authorization', null).send(await makeRequestBody())

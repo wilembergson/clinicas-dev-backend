@@ -1,11 +1,27 @@
-import { Consult, Day, Specialty } from "@domain/entities";
-import { ConsultRepository, SpecialtyRepository } from "@domain/repositories";
+import { Consult } from "@domain/entities";
+import { ConsultRepository } from "@domain/repositories";
 import { ConnectionDatabase } from "@infra/database/connection-database"
 
 export class ConsultRepositoryDb implements ConsultRepository {
     constructor(
         private readonly database: ConnectionDatabase
     ) { }
+
+    async getConsult(input: ConsultRepository.Input): Promise<Consult> {
+        try {
+            const { specialty, date, accountId } = input
+            const foundConsult = await this.database.getConnection().consult.findFirst({
+                where: {
+                    date,
+                    accountId,
+                    specialty: {
+                        name: specialty
+                    }
+                }
+            })
+            return new Consult(foundConsult)
+        } catch (error) { }
+    }
 
     async save(consult: Consult): Promise<Consult> {
         try {

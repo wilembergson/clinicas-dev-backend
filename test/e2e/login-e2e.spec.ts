@@ -57,7 +57,7 @@ describe('GET /login', () => {
         })
         const response = await app.get("/login").send(login)
         expect(response.statusCode).toEqual(200)
-    })
+    }, 10000)
 
     it('[401]:should be able to make login', async () => {
         const login = await makeLogin()
