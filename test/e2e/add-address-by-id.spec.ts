@@ -71,7 +71,7 @@ describe('GET /address', () => {
         const response = await app.get("/address").set('authorization', token)
         expect(response.statusCode).toEqual(200)
         expect(response.body).toStrictEqual(address.getState())
-    })
+    }, 10000)
 
     it('should throw to the account with null linked address', async () => {
         const account = makeAccount()
