@@ -7,6 +7,21 @@ export class ConsultRepositoryDb implements ConsultRepository {
         private readonly database: ConnectionDatabase
     ) { }
 
+    async listConsults(accountId: string): Promise<Consult[]> {
+        try {
+            const foundConsults = await this.database.getConnection().consult.findMany({
+                where: {
+                    accountId
+                },
+                include: {
+                    specialty: {},
+                }
+            })
+            const consults = foundConsults.map(item => new Consult(item))
+            return consults
+        } catch (error) { }
+    }
+
     async getConsult(input: ConsultRepository.Input): Promise<Consult> {
         try {
             const { specialty, date, accountId } = input

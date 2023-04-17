@@ -1,5 +1,4 @@
-import { faker } from "@faker-js/faker"
-import { Day, Specialty } from "@domain/entities"
+import { Day } from "@domain/entities"
 
 describe('Day', () => {
     function makeDay(name: string) {
