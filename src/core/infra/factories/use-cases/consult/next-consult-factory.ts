@@ -1,4 +1,4 @@
-import { ListConsultsUsecase, NextConsultUsecase } from "@application/use-cases"
+import { NextConsultUsecase } from "@application/use-cases"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
 
 export function nextConsultFactory() {

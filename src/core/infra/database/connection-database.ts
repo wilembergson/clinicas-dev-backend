@@ -4,17 +4,17 @@ import { Database } from './databese';
 export class ConnectionDatabase implements Database<PrismaClient>{
     private client: PrismaClient
 
-    constructor(){
+    constructor() {
         this.client = new PrismaClient()
     }
-    
-    getConnection(){
+
+    getConnection() {
         return this.client
     }
 
-    async clearStorage (table:string): Promise<void> {
-        const keys = await this.client[table].deleteMany()
-      }
+    async clearStorage(table: string): Promise<void> {
+        const keys = this.client.$executeRaw`TRUNCATE TABLE "${table}" CASCADE`
+    }
 
     async close(): Promise<void> {
         await this.client.$disconnect()
