@@ -6,15 +6,12 @@ import { Controller, HttpRequest, HttpResponse, Validation } from "@infra/protoc
 
 export class ListConsultsController implements Controller {
     constructor(
-        //private readonly validation: Validation,
         private readonly listConsultsUsecase: ListConsults
     ) { }
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
             const { sessionAccount } = httpRequest
-            //const error = await this.validation.validate(httpRequest)
-            //if(error) return badRequest(error)
             const consults = await this.listConsultsUsecase.execute(sessionAccount)
             return ok(consults)
         } catch (error) {
