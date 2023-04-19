@@ -9,7 +9,8 @@ export class CpfFormatValidation implements Validation{
     async validate(input: HttpRequest): Promise<BaseException> {
         let cpf:string
         (input.body.cpf ? cpf = input.body.cpf : cpf = input.params.cpf)
-        const isValid = this.cpfValidator.isValid(cpf)
+        const formatedCPF = cpf.replace(/\.|\-/g, '')
+        const isValid = this.cpfValidator.isValid(formatedCPF)
         if(!isValid) return new InvalidCpfException()
     }
     

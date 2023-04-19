@@ -5,6 +5,6 @@ import { loginControllerFactory, signupControllerFactory } from "@infra/factorie
 const signupRouter = Router()
 
 signupRouter.post('/signup', adaptRoute(signupControllerFactory()))
-signupRouter.get('/login', adaptRoute(loginControllerFactory()))
+signupRouter.post('/login', adaptRoute(loginControllerFactory()))
 
 export default signupRouter
