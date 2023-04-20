@@ -16,6 +16,7 @@ export class HistoricConsultsUsecase implements HistoricConsults {
         const list = await this.consultRepository.listConsults(account.getState().id)
         list.sort((a, b) => Number(new Date(b.getState().date)) - Number(new Date(a.getState().date)))
         const today = new Date()
+        today.setHours(-3, 0, 0, 0)
         const orderedList = list.filter(item => new Date(item.getState().date) < today)
         return orderedList
     }

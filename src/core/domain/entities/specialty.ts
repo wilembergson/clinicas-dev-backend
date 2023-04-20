@@ -25,6 +25,10 @@ export class Specialty {
     getAvailableDays(): number[]{
         return this.days.map(item => item.getDayNumber())
     }
+
+    getAvailableNameDays(): string[]{
+        return this.days.map(item => item.getState().name)
+    }
 }
 
 export namespace Specialty {
