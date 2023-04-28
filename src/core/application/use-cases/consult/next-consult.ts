@@ -16,7 +16,7 @@ export class NextConsultUsecase implements NextConsult {
         const list = await this.consultRepository.listConsults(account.getState().id)
         list.sort((a, b) => Number(new Date(a.getState().date)) - Number(new Date(b.getState().date)))
         const today = new Date()
-        const orderedList = list.filter(item => new Date(item.getState().date) < today)
+        const orderedList = list.filter(item => new Date(item.getState().date) > today)
         return orderedList[0]
     }
 
