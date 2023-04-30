@@ -13,7 +13,7 @@
     "test:cov": "npm run test -- --coverage"
   },
   "prisma": {
-    "seed-dev": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",

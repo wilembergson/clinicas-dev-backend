@@ -7,6 +7,19 @@ export class ConsultRepositoryDb implements ConsultRepository {
         private readonly database: ConnectionDatabase
     ) { }
 
+    async getConsultById(id: string): Promise<Consult> {
+        try {
+            const foundConsult = await this.database.getConnection().consult.findFirst({
+                where: { id },
+                include: {
+                    account: {},
+                    specialty: {}
+                }
+            })
+            return new Consult(foundConsult)
+        } catch (error) { }
+    }
+
     async listConsults(accountId: string): Promise<Consult[]> {
         try {
             const foundConsults = await this.database.getConnection().consult.findMany({
@@ -40,11 +53,12 @@ export class ConsultRepositoryDb implements ConsultRepository {
 
     async save(consult: Consult): Promise<Consult> {
         try {
-            const { id, date, specialty, account } = consult.getState()
+            const { id, date, active, specialty, account } = consult.getState()
             const savedConsult = await this.database.getConnection().consult.create({
                 data: {
                     id,
                     date,
+                    active,
                     specialty: {
                         connectOrCreate: {
                             where: {
@@ -68,6 +82,20 @@ export class ConsultRepositoryDb implements ConsultRepository {
                 include: {
                     specialty: true,
                     account: true
+                }
+            })
+            const result = new Consult(savedConsult)
+            return result
+        } catch (error) {
+        }
+    }
+    async update(consult: Consult): Promise<Consult> {
+        try {
+            const { id, active } = consult.getState()
+            const savedConsult = await this.database.getConnection().consult.update({
+                where: { id },
+                data: {
+                    active
                 }
             })
             const result = new Consult(savedConsult)

@@ -37,6 +37,7 @@ model Address {
 model Consult {
   id          String    @id @db.Uuid()
   date        String
+  active      Boolean
   accountId   String    @db.Uuid()
   specialtyId String    @db.Uuid()
   account     Account   @relation(fields: [accountId], references: [id])

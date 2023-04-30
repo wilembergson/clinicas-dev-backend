@@ -4,6 +4,8 @@ export interface ConsultRepository {
     save(consult: Consult): Promise<Consult>
     getConsult(input: ConsultRepository.Input): Promise<Consult>
     listConsults(accountId: string): Promise<Consult[]>
+    getConsultById(id: string): Promise<Consult>
+    update(consult: Consult): Promise<Consult>
 }
 
 export namespace ConsultRepository {

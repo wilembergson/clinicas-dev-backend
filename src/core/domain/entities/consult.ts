@@ -5,17 +5,19 @@ import { Specialty } from "./specialty";
 export class Consult {
     private id: ID
     private date: string
+    private active: boolean
     private specialty: Specialty
     private account: Account
 
     constructor({ id, ...rest }: Consult.Constructor) {
-        Object.assign(this, rest, { id: new ID(id) })
+        Object.assign(this, rest, { id: new ID(id) }, this.active = true)
     }
 
     getState(): Consult.State {
         return {
             id: this.id.value,
             date: this.date,
+            active: this.active,
             specialty: this.specialty,
             account: this.account
         }
@@ -29,6 +31,9 @@ export class Consult {
         this.account = account
     }
 
+    setActive(active: boolean){
+        this.active = active
+    }
 }
 
 export namespace Consult {
@@ -39,6 +44,7 @@ export namespace Consult {
     export type State = {
         id: string
         date: string
+        active: boolean
         specialty: Specialty
         account: Account
     }
