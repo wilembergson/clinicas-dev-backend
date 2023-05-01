@@ -1,5 +1,5 @@
 import { Consult } from "@domain/entities"
 
 export interface CancelConsult {
-    execute(id: string): Promise<Consult>
+    execute(id: string, accountId: string): Promise<Consult>
 }

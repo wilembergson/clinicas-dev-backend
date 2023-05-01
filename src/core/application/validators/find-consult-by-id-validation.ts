@@ -9,7 +9,8 @@ export class FindConsultByIDValidation implements Validation {
 
     async validate(input: HttpRequest): Promise<BaseException> {
         const { id } = input.params
-        const consult = await this.findConsult.execute(id)
+        const accountId = input.sessionAccount.getState().id
+        const consult = await this.findConsult.execute(id, accountId)
         if (!consult) return new NotFoundConsultException()
     }
 

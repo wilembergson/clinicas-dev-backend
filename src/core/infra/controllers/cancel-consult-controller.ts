@@ -10,10 +10,10 @@ export class CancelConsultController implements Controller {
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
-            const { params } = httpRequest
+            const { params, sessionAccount } = httpRequest
             const error = await this.validation.validate(httpRequest)
             if (error) return badRequest(error)
-            await this.cancelConsultUsecase.execute(params.id)
+            await this.cancelConsultUsecase.execute(params.id, sessionAccount.getState().id)
             return ok({ message: "Consulta desmarcada" })
         } catch (error) {
             return serverError(error)

@@ -12,7 +12,7 @@ export class FindConsultByIdUsecase implements FindConsultById {
         this.consultRepository = repositoryFactory.consultRepository()
     }
     
-    async execute(id: string): Promise<Consult> {
-        return await this.consultRepository.getConsultById(id)
+    async execute(id: string, accountId: string): Promise<Consult> {
+        return await this.consultRepository.getConsultById(id, accountId)
     }
 }

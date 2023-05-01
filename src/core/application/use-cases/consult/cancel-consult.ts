@@ -10,8 +10,8 @@ export class CancelConsultUsecase implements CancelConsult {
         this.consultRepositoty = respositoryFactory.consultRepository()
     }
 
-    async execute(id: string): Promise<Consult> {
-        const consult = await this.consultRepositoty.getConsultById(id)
+    async execute(id: string, accountId: string): Promise<Consult> {
+        const consult = await this.consultRepositoty.getConsultById(id, accountId)
         consult.setActive(false)
         return await this.consultRepositoty.update(consult)
     }

@@ -7,10 +7,13 @@ export class ConsultRepositoryDb implements ConsultRepository {
         private readonly database: ConnectionDatabase
     ) { }
 
-    async getConsultById(id: string): Promise<Consult> {
+    async getConsultById(id: string, accountId: string): Promise<Consult> {
         try {
             const foundConsult = await this.database.getConnection().consult.findFirst({
-                where: { id },
+                where: {
+                    id,
+                    accountId
+                },
                 include: {
                     account: {},
                     specialty: {}
