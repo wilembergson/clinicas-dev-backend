@@ -55,7 +55,7 @@ describe('GET /login', () => {
         const res = await connection.getConnection().account.create({
             data: account.getState()
         })
-        const response = await app.get("/login").send(login)
+        const response = await app.post("/login").send(login)
         expect(response.statusCode).toEqual(200)
     }, 10000)
 
@@ -65,7 +65,7 @@ describe('GET /login', () => {
         const res = await connection.getConnection().account.create({
             data: account.getState()
         })
-        const response = await app.get("/login").send({
+        const response = await app.post("/login").send({
             email: login.email,
             password: faker.internet.password()
         })
