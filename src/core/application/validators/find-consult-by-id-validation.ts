@@ -11,7 +11,6 @@ export class FindConsultByIDValidation implements Validation {
         const { id } = input.params
         const accountId = input.sessionAccount.getState().id
         const consult = await this.findConsult.execute(id, accountId)
-        console.log(consult)
         if (!consult) return new NotFoundConsultException()
     }
 

@@ -12,5 +12,4 @@ export class ExistentSpecialtyValidation implements Validation {
         const specialty = await this.findSpecialty.execute(specialtyName)
         if (!specialty) return new NotFoundSpecialtyException()
     }
-
 }
