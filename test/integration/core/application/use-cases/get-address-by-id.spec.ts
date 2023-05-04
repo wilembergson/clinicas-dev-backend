@@ -54,7 +54,6 @@ describe('GetAddressById', () => {
         await repositoryFactory.accountRepository().add(account)
         const address = makeAddress()
         await addAddress.execute(address.getStateString(), account)
-        //const updatedAddress = makeAddress(address.getState().id)
         const response = await sut.execute(address.getStateString().id)
         expect(() => response).not.toThrow()
         expect(response).toStrictEqual(address.getState())

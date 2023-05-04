@@ -27,14 +27,14 @@ describe('Specialty', () => {
     })
     it('should update days property', () => {
         const specialty = makeSpecialty()
-        const days = [
-            makeDay('SEGUNDA'),
-            makeDay('TERÇA'),
-            makeDay('QUARTA')
-        ]
+        const segunda = makeDay('SEGUNDA')
+        const terca = makeDay('TERÇA')
+        const quarta = makeDay('QUARTA')
+        const days = [segunda, terca, quarta]
         const daysWeekNumber = days.map(item => item.getDayNumber())
+        const daysName = days.map(item => item.getState().name)
         specialty.addDays(days)
-        expect(specialty.getState().days).toStrictEqual(days)
+        expect(specialty.getAvailableNameDays()).toStrictEqual(daysName)
         expect(specialty.getAvailableDays()).toStrictEqual(daysWeekNumber)
     })
 })

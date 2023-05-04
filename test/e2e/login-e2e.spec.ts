@@ -7,7 +7,7 @@ import { ConnectionDatabase } from "@infra/database/connection-database";
 import { Account } from "@domain/entities";
 
 
-describe('GET /login', () => {
+describe('POST /login', () => {
     const app = supertest(new ExpressApp().getInstance)
     const connection = new ConnectionDatabase()
 

@@ -51,7 +51,7 @@ describe('Login', () => {
         }
     }
 
-    it('should create a new account', async () => {
+    it('should login on an account', async () => {
         const login = makeLogin()
         const account = makeAccount(login.email, login.password)
         await signup.execute(account.getState())

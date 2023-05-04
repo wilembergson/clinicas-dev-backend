@@ -15,7 +15,11 @@ export class ConsultRepositoryDb implements ConsultRepository {
                     accountId
                 },
                 include: {
-                    account: {},
+                    account: {
+                        include: {
+                            address:{}
+                        }
+                    },
                     specialty: {}
                 }
             })
