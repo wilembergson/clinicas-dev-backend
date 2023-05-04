@@ -1,4 +1,3 @@
-import { Specialty } from "@domain/entities"
 import { RepositoryFactory } from "@domain/factories"
 import { SpecialtyRepository } from "@domain/repositories"
 import { ListSpecialties } from "@domain/use-cases/specialty"
@@ -19,9 +18,7 @@ export class ListSpecialtiesUsecase implements ListSpecialties {
                 days: item.getAvailableNameDays()
             }))
             return result
-        } catch (error) {
-            console.error(error)
-        }
+        } catch (error) { }
     }
 
 }

@@ -13,10 +13,8 @@ export class FindSpecialtyByNameUsecase implements FindSpecialtyByName {
     }
     async execute(name: string): Promise<Specialty> {
         try {
-            return await this.specialtyRepository.getByName(name)   
-        } catch (error) {
-            console.error(error)
-        }
+            return await this.specialtyRepository.getByName(name)
+        } catch (error) { }
     }
 
 }
