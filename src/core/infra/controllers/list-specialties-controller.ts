@@ -8,12 +8,7 @@ export class ListSpecialtiesController implements Controller {
     ) { }
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-        try {
-            const specialties = await this.listSpecialtiesUsecase.execute()
-            return ok(specialties)
-        } catch (error) {
-            return serverError(error)
-        }
+        const specialties = await this.listSpecialtiesUsecase.execute()
+        return ok(specialties)
     }
-
 }

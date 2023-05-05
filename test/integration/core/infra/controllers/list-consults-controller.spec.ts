@@ -2,26 +2,23 @@ import { generate } from "cpf";
 import { faker } from "@faker-js/faker";
 import { HttpRequest } from "@infra/protocols";
 import { Account, Consult } from "@domain/entities";
-import { CancelConsult } from "@domain/use-cases/consult";
-import { CancelConsultController } from "@infra/controllers";
-import { CancelConsultUsecase } from "@application/use-cases";
-import { NotFoundConsultException } from "@application/exceptions";
+import { ListConsults } from "@domain/use-cases/consult";
+import { ListConsultsController } from "@infra/controllers";
+import { ListConsultsUsecase } from "@application/use-cases";
 import { DbRepositoryFactory } from "@infra/factories/repositories";
 import { ConnectionDatabase } from "@infra/database/connection-database";
-import { cancelConsultValidationFactory } from "@infra/factories/validators/cancel-consult-validation-factory";
 
-
-describe('AddConsultController', () => {
+describe('ListConsulstController', () => {
     let connection: ConnectionDatabase
     let repositoryFactory: DbRepositoryFactory
-    let cancelConsultUsecase: CancelConsult
-    let sut: CancelConsultController
+    let listConsultsUsecase: ListConsults
+    let sut: ListConsultsController
 
     beforeAll(() => {
         connection = new ConnectionDatabase()
         repositoryFactory = new DbRepositoryFactory()
-        cancelConsultUsecase = new CancelConsultUsecase(repositoryFactory)
-        sut = new CancelConsultController(cancelConsultValidationFactory(), cancelConsultUsecase)
+        listConsultsUsecase = new ListConsultsUsecase(repositoryFactory)
+        sut = new ListConsultsController(listConsultsUsecase)
     })
     afterEach(async () => {
         await connection.clearStorage('consult')
@@ -45,9 +42,10 @@ describe('AddConsultController', () => {
         })
         return account
     }
-    async function makeConsult(account: Account){
+    
+    async function makeConsult(date: string, account: Account){
         const consult = new Consult({
-            date: '2024-12-02'
+            date
         })
         const specialty = await repositoryFactory.specialtyRepository().getByName('PEDIATRIA')
         consult.addSpecialty(specialty)
@@ -55,33 +53,27 @@ describe('AddConsultController', () => {
         return consult
     }
 
-    function makeRequest(consultId:string, account: Account): HttpRequest {
+    function makeRequest(account: Account): HttpRequest {
         return {
-            params: {
-                id: consultId
-            },
             sessionAccount: account
         }
     }
 
-    it('should find a registred consult', async () => {
-        const account = await repositoryFactory.accountRepository().add(makeAccount())
-        const consult = await makeConsult(new Account(account))
-        await repositoryFactory.consultRepository().save(consult)
-        const response = await sut.handle(makeRequest(consult.getState().id, new Account(account)))
+    it('should list the registred consults', async () => {
+        const accountData = await repositoryFactory.accountRepository().add(makeAccount())
+        const account = new Account(accountData)
+        const consult1 = await makeConsult('2024-12-02', account)
+        const consult2 = await makeConsult('2024-12-09', account)
+        const list = [consult1, consult2]
+        await repositoryFactory.consultRepository().save(consult1)
+        await repositoryFactory.consultRepository().save(consult2)
+        const response = await sut.handle(makeRequest(account))
         expect(response.statusCode).toEqual(200)
-        expect(response.body).toStrictEqual({ message: 'Consulta desmarcada' })
+        expect(response.body.length).toEqual(list.length)
     })
 
     it('should throw a server error', async () => {
         const response = await sut.handle(null)
         expect(response.statusCode).toEqual(500)
-    })
-
-    it('should throw for an invalid consult ID', async () => {
-        const account = await repositoryFactory.accountRepository().add(makeAccount())
-        const response = await sut.handle(makeRequest(faker.datatype.uuid(), new Account(account)))
-        expect(response.statusCode).toEqual(404)
-        expect(response.body).toEqual(new NotFoundConsultException())
     })
 })

@@ -2,13 +2,11 @@ import { generate } from "cpf";
 import { faker } from "@faker-js/faker";
 import { Account } from "@domain/entities";
 import { HttpRequest } from "@infra/protocols";
-import { AddAddressUsecase, GetAddressByIdUsecase } from "@application/use-cases";
-import { MissingParamError, NullAddressException } from "@application/exceptions";
-import { GetAddressByIdController, UpdateAddressController } from "@infra/controllers";
+import { GetAddressByIdController } from "@infra/controllers";
+import { NullAddressException } from "@application/exceptions";
 import { DbRepositoryFactory } from "@infra/factories/repositories";
 import { ConnectionDatabase } from "@infra/database/connection-database";
-import { UpdateAddressUsecase } from "@application/use-cases/address/update-address";
-import { updateAddressValidationFactory } from "@infra/factories/validators/update-address-validation-factory";
+import { AddAddressUsecase, GetAddressByIdUsecase } from "@application/use-cases";
 import { getAddressByIdValidationFactory } from "@infra/factories/validators/get-address-by-id-validation-factory";
 
 

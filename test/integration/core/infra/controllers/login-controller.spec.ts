@@ -4,13 +4,12 @@ import { Account } from "@domain/entities";
 import { HttpRequest } from "@infra/protocols";
 import { LoginController } from "@infra/controllers";
 import { LoginUsecase } from "@application/use-cases";
-import { ExistsEmailException, InvalidEmailException, InvalidPasswordException, MissingParamError, NotFoundEmailException } from "@application/exceptions";
 import { BcryptAdapter, JwtAdapter } from "@infra/cryptografy";
 import { DbRepositoryFactory } from "@infra/factories/repositories";
 import { ConnectionDatabase } from "@infra/database/connection-database";
 import { Encrypter, HashComparer, Hasher } from "@application/protocols/cryptografy";
 import { loginValidationFactory } from "@infra/factories/validators/login-validation-factory";
-import { ExistentCpfValidation } from "@application/validators";
+import { InvalidEmailException, InvalidPasswordException, MissingParamError, NotFoundEmailException } from "@application/exceptions";
 
 describe('LoginController', () => {
     let connection: ConnectionDatabase

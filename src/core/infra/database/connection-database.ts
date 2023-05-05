@@ -13,7 +13,8 @@ export class ConnectionDatabase implements Database<PrismaClient>{
     }
 
     async clearStorage(table: string): Promise<void> {
-        const keys = this.client.$executeRaw`TRUNCATE TABLE "${table}" CASCADE`
+        const tableModel = await this.client[table]
+        await tableModel.deleteMany({})
     }
 
     async close(): Promise<void> {

@@ -1,5 +1,4 @@
 import { generate } from "cpf";
-import jwt from "jsonwebtoken";
 import { faker } from "@faker-js/faker";
 import { Account } from "@domain/entities";
 import { HttpRequest } from "@infra/protocols";

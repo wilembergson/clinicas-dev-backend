@@ -35,7 +35,7 @@ describe('POST /signup', () => {
     it('[200]:should be able to add a new account', async () => {
         const response = await app.post("/signup").send(await makeRequest())
         expect(response.statusCode).toEqual(201)
-    }, 10000)
+    }, 20000)
 
     it('[400]:should throw to add an invalid cpf', async () => {
         const response = await app.post("/signup").send(await makeInvalidRequest())

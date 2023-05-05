@@ -6,7 +6,6 @@ import { DbRepositoryFactory } from "@infra/factories/repositories"
 import { Hasher } from "@application/protocols/cryptografy/hasher"
 import { AddAddressUsecase, SignupUsecase } from "@application/use-cases"
 import { Account, Address } from "@domain/entities"
-import { Signup } from "@domain/use-cases/signup-login/signup"
 import { AddAddress } from "@domain/use-cases/address"
 
 describe('AddAddress', () => {

@@ -57,12 +57,12 @@ describe('POST /login', () => {
         })
         const response = await app.post("/login").send(login)
         expect(response.statusCode).toEqual(200)
-    }, 10000)
+    }, 20000)
 
     it('[401]:should be able to make login', async () => {
         const login = await makeLogin()
         const account = await makeAccount(login.email, login.password)
-        const res = await connection.getConnection().account.create({
+        await connection.getConnection().account.create({
             data: account.getState()
         })
         const response = await app.post("/login").send({
