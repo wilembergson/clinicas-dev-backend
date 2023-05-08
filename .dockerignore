@@ -1,0 +1,14 @@
+# arquivos e pastas gerados pelo TypeScript
+**/*.ts
+**/*.tsx
+
+# arquivos de dependências npm
+node_modules/
+
+# arquivos do git
+.git/
+
+# arquivos de build
+dist/
+build/
+test/

@@ -1,4 +1,4 @@
-import { ID } from "./id";
+    import { ID } from "./id";
 
 export class Day {
     private id: ID

@@ -61,7 +61,7 @@ describe('AddConsultController', () => {
         const account = await repositoryFactory.accountRepository().add(makeAccount())
         const addConsult: RequestBody = {
             specialty: 'PEDIATRIA',
-            date: '2024-12-02'
+            date: '2024-12-03'
         }
         const response = await sut.handle(makeRequest(addConsult, new Account(account)))
         expect(response.statusCode).toEqual(201)
