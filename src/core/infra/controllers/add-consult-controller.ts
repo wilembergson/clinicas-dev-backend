@@ -15,7 +15,7 @@ export class AddConsultController implements Controller {
             const error = await this.validation.validate(httpRequest)
             if(error) return badRequest(error)
             await this.addConsultUsecase.execute(body, sessionAccount)
-            return created("Consult saved.")
+            return created("Consulta marcada")
         } catch (error) {
             return serverError(error)
         }

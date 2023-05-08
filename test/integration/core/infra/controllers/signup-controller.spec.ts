@@ -56,7 +56,7 @@ describe('SignupController', () => {
         const account = makeAccount().getInformationsWithPassword()
         const response = await sut.handle(makeRequest(new Account(account).getInformationsWithPassword()))
         expect(response.statusCode).toEqual(201)
-        expect(response.body).toStrictEqual({ message: 'Account created.' })
+        expect(response.body).toStrictEqual({ message: 'Conta criada com sucesso' })
     })
 
     it('should throw a server error', async () => {

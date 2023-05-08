@@ -13,7 +13,7 @@ export class SignupController implements Controller {
             const error = await this.validation.validate(httpRequest)
             if(error) return badRequest(error)
             await this.signupUsecase.execute(httpRequest.body)
-            return created("Account created.")
+            return created("Conta criada com sucesso")
         } catch (error) {
             return serverError(error)
         }

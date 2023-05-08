@@ -65,7 +65,7 @@ describe('AddConsultController', () => {
         }
         const response = await sut.handle(makeRequest(addConsult, new Account(account)))
         expect(response.statusCode).toEqual(201)
-        expect(response.body).toStrictEqual({ message: 'Consult saved.' })
+        expect(response.body).toStrictEqual({ message: 'Consulta marcada' })
     })
 
     it('should throw a server error', async () => {

@@ -14,7 +14,7 @@ export class AddAddressController implements Controller {
             const error = await this.validation.validate(httpRequest)
             if(error) return badRequest(error)
             await this.addAddressUsecase.execute(body, sessionAccount)
-            return created("Address saved.")
+            return created("Endereço salvo")
         } catch (error) {
             return serverError(error)
         }

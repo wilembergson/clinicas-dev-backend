@@ -70,7 +70,7 @@ describe('UpdateAddressController', () => {
         const address = await addAddressUsecase.execute(makeAddress(), account)
         const response = await sut.handle(makeRequest(account, makeAddress(address.id)))
         expect(response.statusCode).toEqual(200)
-        expect(response.body).toStrictEqual({ message: 'Address updated.' })
+        expect(response.body).toStrictEqual({ message: 'Endereço atualizado' })
     })
 
     it('should throw a server error', async () => {

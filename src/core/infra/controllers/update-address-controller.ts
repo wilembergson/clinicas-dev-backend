@@ -14,7 +14,7 @@ export class UpdateAddressController implements Controller {
             const error = await this.validation.validate(httpRequest)
             if (error) return badRequest(error)
             await this.updateAddressUsecase.execute(body)
-            return ok({ message: "Address updated." })
+            return ok({ message: "Endereço atualizado" })
         } catch (error) {
             return serverError(error)
         }

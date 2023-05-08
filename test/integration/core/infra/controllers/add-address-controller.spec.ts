@@ -66,7 +66,7 @@ describe('AddAddressController', () => {
         const account = await repositoryFactory.accountRepository().add(makeAccount())
         const response = await sut.handle(makeRequest(new Account(account), makeAddress()))
         expect(response.statusCode).toEqual(201)
-        expect(response.body).toStrictEqual({ message: 'Address saved.' })
+        expect(response.body).toStrictEqual({ message: 'Endereço salvo' })
     })
 
     it('should throw a server error', async () => {
