@@ -70,7 +70,7 @@ $ npm run dev
 
 #Response
 {
-	"message": "Conta criada com sucesso"
+  "message": "Conta criada com sucesso"
 }
 ``` 
 </br></br>
@@ -88,7 +88,7 @@ $ npm run dev
 
 # response
 {
-	"token": <jwt-token>
+  "token": <jwt-token>
 }
 ``` 
 </br></br>
@@ -112,7 +112,7 @@ $ npm run dev
 
 # Response
 {
-	"message": "Endereço salvo"
+  "message": "Endereço salvo"
 }
 ``` 
 </br></br>
@@ -156,7 +156,7 @@ $ npm run dev
 
 # Response
 {
-	"message": "Endereço atualizado"
+  "message": "Endereço atualizado"
 }
 ``` 
 </br></br>
@@ -177,7 +177,7 @@ $ npm run dev
 
 # Response
 {
-	"message": "Consulta marcada"
+  "message": "Consulta marcada"
 }
 ``` 
 </br></br>
@@ -195,7 +195,7 @@ URL: baseUrl/cancel-consult/<consult-id>
 
 # Response
 {
-	"message": "Consulta desmarcada"
+  "message": "Consulta desmarcada"
 }
 ``` 
 </br></br>
