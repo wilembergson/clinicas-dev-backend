@@ -208,45 +208,45 @@ URL: baseUrl/cancel-consult/<consult-id>
 
 #Response
 [
-	{
-		"active": true,
-		"date": "2023-05-01",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-		"specialty": {
-			"id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-			"name": "ORTOPEDIA"
-		},
-		"id": {
-			"_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
-		}
-	},
-	{
-		"active": true,
-		"date": "2023-05-02",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
-		"specialty": {
-			"id": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
-			"name": "CARDIOLOGIA"
-		},
-		"id": {
-			"_value": "e3fc6700-0007-4303-b263-94934d921164"
-		}
-	},
-	{
-		"active": true,
-		"date": "2023-05-04",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
-		"specialty": {
-			"id": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
-			"name": "PEDIATRIA"
-		},
-		"id": {
-			"_value": "2eff9d3d-c3da-4f62-84bb-2f746133f77e"
-		}
-	}
+  {
+    "active": true,
+    "date": "2023-05-01",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
+    "specialty": {
+      "id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
+      "name": "ORTOPEDIA"
+    },
+    "id": {
+      "_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
+    }
+  },
+  {
+    "active": true,
+    "date": "2023-05-02",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
+    "specialty": {
+      "id": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
+      "name": "CARDIOLOGIA"
+    },
+    "id": {
+      "_value": "e3fc6700-0007-4303-b263-94934d921164"
+    }
+  },
+  {
+    "active": true,
+    "date": "2023-05-04",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
+    "specialty": {
+      "id": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
+      "name": "PEDIATRIA"
+    },
+    "id": {
+      "_value": "2eff9d3d-c3da-4f62-84bb-2f746133f77e"
+    }
+  }
 ]
 ``` 
 </br></br>
@@ -260,19 +260,19 @@ URL: baseUrl/cancel-consult/<consult-id>
 
 #Response
 [
-	{
-		"active": true,
-		"date": "2023-05-01",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-		"specialty": {
-			"id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-			"name": "ORTOPEDIA"
-		},
-		"id": {
-			"_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
-		}
-	}
+  {
+    "active": true,
+    "date": "2023-05-01",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4"
+    "specialty": {
+      "id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
+      "name": "ORTOPEDIA"
+    },
+    "id": {
+      "_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
+    }
+  }
 ]
 ``` 
 </br></br>
@@ -286,45 +286,45 @@ URL: baseUrl/cancel-consult/<consult-id>
 
 #Response
 [
-	{
-		"active": true,
-		"date": "2022-05-01",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-		"specialty": {
-			"id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
-			"name": "ORTOPEDIA"
-		},
-		"id": {
-			"_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
-		}
-	},
   {
-		"active": true,
-		"date": "2022-05-02",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
-		"specialty": {
-			"id": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
-			"name": "CARDIOLOGIA"
-		},
-		"id": {
-			"_value": "e3fc6700-0007-4303-b263-94934d921164"
-		}
-	},
-	{
-		"active": true,
-		"date": "2021-05-04",
-		"accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
-		"specialtyId": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
-		"specialty": {
-			"id": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
-			"name": "PEDIATRIA"
-		},
-		"id": {
-			"_value": "2eff9d3d-c3da-4f62-84bb-2f746133f77e"
-		}
-	}
+    "active": true,
+    "date": "2022-05-01",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
+    "specialty": {
+      "id": "314cb50e-8f95-4ba8-91c9-83830b1f2fb4",
+      "name": "ORTOPEDIA"
+    },
+    "id": {
+      "_value": "19598252-4ba6-4d4d-b8d5-8b414457d402"
+    }
+  },
+  {
+    "active": true,
+    "date": "2022-05-02",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
+    "specialty": {
+      "id": "fbb1cca9-88f0-4720-842d-9954d4a8d0cf",
+      "name": "CARDIOLOGIA"
+    },
+    "id": {
+      "_value": "e3fc6700-0007-4303-b263-94934d921164"
+    }
+  },
+  {
+    "active": true,
+    "date": "2021-05-04",
+    "accountId": "ddae3949-62f4-48d6-8061-63e6fa35245a",
+    "specialtyId": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
+    "specialty": {
+      "id": "9ba47882-52e8-4df3-b2f8-ee773feaa225",
+      "name": "PEDIATRIA"
+    },
+    "id": {
+      "_value": "2eff9d3d-c3da-4f62-84bb-2f746133f77e"
+      }
+    }
 ]
 ``` 
 </br></br>
@@ -338,36 +338,36 @@ URL: baseUrl/cancel-consult/<consult-id>
 
 #Response
 [
-	{
-		"name": "ORTOPEDIA",
-		"days": [
-			"SEGUNDA",
-			"TERÇA",
-			"SEXTA"
-		]
-	},
-	{
-		"name": "CARDIOLOGIA",
-		"days": [
-			"TERÇA",
-			"QUARTA"
-		]
-	},
-	{
-		"name": "PEDIATRIA",
-		"days": [
-			"SEGUNDA",
-			"QUINTA",
-			"SEXTA"
-		]
-	},
-	{
-		"name": "HEMATOLOGIA",
-		"days": [
-			"QUARTA",
-			"QUINTA"
-		]
-	}
+  {
+    "name": "ORTOPEDIA",
+    "days": [
+      "SEGUNDA",
+      "TERÇA",
+      "SEXTA"
+    ]
+  },
+  {
+    "name": "CARDIOLOGIA",
+    "days": [
+      "TERÇA",
+      "QUARTA"
+    ]
+  },
+  {
+    "name": "PEDIATRIA",
+    "days": [
+      "SEGUNDA",
+      "QUINTA",
+      "SEXTA"
+    ]
+  },
+  {
+    "name": "HEMATOLOGIA",
+    "days": [
+      "QUARTA",
+      "QUINTA"
+    ]
+  }
 ]
 ``` 
 </br></br>
