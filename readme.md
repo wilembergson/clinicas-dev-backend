@@ -232,7 +232,7 @@ URL: baseUrl/cancel-consult/<consult-id>
     },
     "id": {
       "_value": "e3fc6700-0007-4303-b263-94934d921164"
-    }
+      }
   },
   {
     "active": true,
@@ -323,8 +323,8 @@ URL: baseUrl/cancel-consult/<consult-id>
     },
     "id": {
       "_value": "2eff9d3d-c3da-4f62-84bb-2f746133f77e"
-      }
     }
+  }
 ]
 ``` 
 </br></br>

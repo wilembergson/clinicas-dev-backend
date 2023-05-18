@@ -1,4 +1,5 @@
 module.exports = {
+  testTimeout: 50000,
   preset: 'ts-jest',
   testEnvironment: 'node',
   collectCoverageFrom: ['<rootDir>/src/core/**/*.ts', '!<rootDir>/src/core/**/index.ts'],

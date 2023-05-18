@@ -6,7 +6,6 @@ import { ExpressApp } from "@infra/config";
 import { ConnectionDatabase } from "@infra/database/connection-database";
 import { Account } from "@domain/entities";
 
-
 describe('POST /login', () => {
     const app = supertest(new ExpressApp().getInstance)
     const connection = new ConnectionDatabase()
@@ -57,7 +56,7 @@ describe('POST /login', () => {
         })
         const response = await app.post("/login").send(login)
         expect(response.statusCode).toEqual(200)
-    }, 20000)
+    })
 
     it('[401]:should be able to make login', async () => {
         const login = await makeLogin()

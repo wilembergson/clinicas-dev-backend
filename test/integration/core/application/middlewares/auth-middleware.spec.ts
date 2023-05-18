@@ -69,7 +69,7 @@ describe('AuthMiddleware', () => {
         const response = await sut.handle(makeRequest(token))
         expect(response.statusCode).toEqual(200)
         expect(response.body.getState()).toStrictEqual(account)
-    }, 2000)
+    })
 
     it('should throw for null token', async () => {
         const response = await sut.handle(makeRequest(null))

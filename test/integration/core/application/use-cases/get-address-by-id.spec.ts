@@ -4,7 +4,6 @@ import { ConnectionDatabase } from "@infra/database/connection-database"
 import { DbRepositoryFactory } from "@infra/factories/repositories"
 import { Account, Address } from "@domain/entities"
 import { AddAddress, GetAddressById, UpdateAddress } from "@domain/use-cases/address"
-import { UpdateAddressUsecase } from "@application/use-cases/address/update-address"
 import { AddAddressUsecase, GetAddressByIdUsecase } from "@application/use-cases"
 
 describe('GetAddressById', () => {

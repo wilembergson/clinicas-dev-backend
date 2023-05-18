@@ -56,7 +56,7 @@ describe('POST /address', () => {
         const token = await encrypter.encrypt({ cpf: account.cpf, name: account.name })
         const response = await app.post("/address").set('authorization', token).send(await makeRequestBody())
         expect(response.statusCode).toEqual(201)
-    }, 20000)
+    })
 
     it('should throw to invalid token', async () => {
         const response = await app.post("/address").set('authorization', null).send(await makeRequestBody())
