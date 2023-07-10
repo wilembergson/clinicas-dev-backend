@@ -9,6 +9,8 @@ ENV DB_USER=$DB_USER
 ENV DB_PASSWORD=$DB_PASSWORD
 
 COPY ./prisma .
+COPY ./src .
 COPY ./package.json .
+COPY ./tsconfig.json .
 
 RUN npm install
